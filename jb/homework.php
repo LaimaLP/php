@@ -139,12 +139,9 @@ if ($skaicius4 === 0) {
   $dvejetuCount++;
 }
 echo '<br>';
-
 echo "1. = $skaicius1, 2. = $skaicius2, 3. = $skaicius3, 4. = $skaicius4<br>";
 echo '<br>';
-
 echo "Nuliu: $nuliuCount, vienetu: $vienetuCount, dvejetu:  $dvejetuCount";
-
 
 /*6. Naudokite funkcija rand(). Sugeneruokite atsitiktinį skaičių nuo 1 iki 6 ir jį 
  atspausdinkite atitinkame h tage. Pvz skaičius 3- rezultatas: <h3>3</h3> */
@@ -165,7 +162,6 @@ turi būti žali, 0 - raudonas, didesni už 0 mėlyni. */
 echo '<br>';
 echo '<h3> 7 uzduotis </h3>';
 echo '<br>';
-
 
 $colorRandom1 = rand(-10, 10);
 $colorRandom2 = rand(-10, 10);
@@ -192,7 +188,14 @@ atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. Žvakių kiekį ge
 echo '<br>';
 echo '<h3> 8 uzduotis </h3>';
 echo '<br>';
-
+$zvakiuKiekis = rand(5, 3000);
+$kokiaKaina = 1;
+if ($zvakiuKiekis > 2000) {
+  $kokiaKaina = 0.96;
+} else if ($zvakiuKiekis > 1000) {
+  $kokiaKaina = 0.97;
+}
+echo "$zvakiuKiekis zvakes po $kokiaKaina";
 
 /* 9. Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 
 0 iki 100. Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, 
@@ -202,6 +205,37 @@ apvalinkite iki sveiko skaičiaus. */
 echo '<br>';
 echo '<h3> 9 uzduotis </h3>';
 echo '<br>';
+$sk1 = rand(0, 100);
+$sk2 = rand(0, 100);
+$sk3 = rand(0, 100);
+
+$suma = $sk1 + $sk2 + $sk3;
+$vidurkis = round($suma / 3);
+echo "vidurkis yra: $vidurkis";
+echo '<br>';
+
+$filteredSum = 0;
+$filteredCount = 0;
+
+if ($sk1 > 10 && $sk1 < 90) {
+  $filteredSum += $sk1;
+  $filteredCount++;
+}
+if ($sk2 > 10 && $sk2 < 90) {
+  $filteredSum += $sk2;
+  $filteredCount++;
+}
+if ($sk3 > 10 && $sk3 < 90) {
+  $filteredSum += $sk3;
+  $filteredCount++;
+}
+
+$filteredAverage = 0;
+if ($filteredCount > 0) {
+  $filteredAverage = round($filteredSum / $filteredCount);
+}
+echo "visi skaiciai: $sk1, $sk2, $sk3. <br>";
+echo "filtruotas vidurkis: $filteredAverage";
 
 
 /* 10. Padarykite skaitmeninį laikrodį, rodantį valandas, minutes ir sekundes. Valandom, 
@@ -220,3 +254,4 @@ echo '<br>';
 echo '<br>';
 echo '<h3> 11 uzduotis </h3>';
 echo '<br>';
+// su kintamojo kintamuoju;
