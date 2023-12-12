@@ -59,19 +59,58 @@ echo $lastThreeLettersCombo;
 
 /*6. Sukurti kintamąjį su stringu: “An American in Paris”. Suskaičiuoti visas “a” 
 (didžiąsias ir mažąsias) raides. Rezultatą atspausdinti.*/
+echo '<br>';
+echo '<h3> 6 uzduotis </h3>';
+$count=0;
+$string2 = 'An American in Paris';
+echo $string2;
+str_replace('a','a', $string2, $count);
+echo '<br>';
+echo "mazuju a: $count";
 
+$countBigA =0;
+
+str_replace('A','A', $string2, $countBigA);
+echo '<br>';
+echo "didziuju A: $countBigA";
 
 /*7. Sukurti kintamąjį su stringu: “An American in Paris”. Jame ištrinti visas balses. Rezultatą 
 atspausdinti. Kodą pakartoti su stringais: “Breakfast at Tiffany's”, “2001: A Space Odyssey” ir 
 “It's a Wonderful Life”.*/
+echo '<br>';
+echo '<h3> 7 uzduotis </h3>';
+$kintamasis = 'An American in Paris';
+$kintamasis2 = 'Breakfast at Tiffany\'s';
+$kintamasis3 = '2001: A Space Odyssey';
+$kintamasis4 = 'It\'s a Wonderful Life';
+
+str_replace('A','', $kintamasis);
+
+echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis);
+echo '<br>';
+echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis2);
+echo '<br>';
+echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis3);
+echo '<br>';
+echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis4);
 
 /* 8. Stringe, kurį generuoja toks kodas: 'Star Wars: 
 Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope'; 
 Surasti ir atspausdinti epizodo numerį.*/
+echo '<h3> 8 uzduotis </h3>';
+$kintamasis5='Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
+
+preg_match('/(\d)/', $kintamasis5, $matches);
+
+echo "Tekstas: $kintamasis5<br>";
+echo "Numeris: $matches[0]";
+
 
 /*9. Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood”
  yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų 
  Centro, geriant sultis pas save kvartale”.*/
+ echo '<h3> 9 uzduotis </h3>';
 
+ $movieName='Don't Be a Menace to South Central While Drinking Your Juice in the Hood';
 
  /* 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.*/
