@@ -35,7 +35,7 @@ raidžių. Jį atspausdinti.*/
 echo '<br>';
 echo '<h3> 3 uzduotis </h3>';
 
-$inicialai = $vardas[0].$pavarde[0];
+$inicialai = $vardas[0] . $pavarde[0];
 echo $inicialai;
 
 /*4. Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus.
@@ -44,33 +44,33 @@ kintamųjų raidžių. Jį atspausdinti. */
 echo '<br>';
 echo '<h3> 4 uzduotis </h3>';
 
-$lastThreeLettersCombo = substr($vardas,-3).''.substr($pavarde,-3);
+$lastThreeLettersCombo = substr($vardas, -3) . '' . substr($pavarde, -3);
 echo $lastThreeLettersCombo;
 
 /*5. Sukurti kintamąjį su stringu: “An American in Paris”. Jame visas “a” (didžiąsias ir mažąsias)
  pakeisti žvaigždutėm “*”.  Rezultatą atspausdinti.*/
- echo '<br>';
- echo '<h3> 5 uzduotis </h3>';
+echo '<br>';
+echo '<h3> 5 uzduotis </h3>';
 
 
- $string = 'An American in Paris';
- echo str_ireplace('a','*', $string);
+$string = 'An American in Paris';
+echo str_ireplace('a', '*', $string);
 
 
 /*6. Sukurti kintamąjį su stringu: “An American in Paris”. Suskaičiuoti visas “a” 
 (didžiąsias ir mažąsias) raides. Rezultatą atspausdinti.*/
 echo '<br>';
 echo '<h3> 6 uzduotis </h3>';
-$count=0;
+$count = 0;
 $string2 = 'An American in Paris';
 echo $string2;
-str_replace('a','a', $string2, $count);
+str_replace('a', 'a', $string2, $count);
 echo '<br>';
 echo "mazuju a: $count";
 
-$countBigA =0;
+$countBigA = 0;
 
-str_replace('A','A', $string2, $countBigA);
+str_replace('A', 'A', $string2, $countBigA);
 echo '<br>';
 echo "didziuju A: $countBigA";
 
@@ -84,7 +84,7 @@ $kintamasis2 = 'Breakfast at Tiffany\'s';
 $kintamasis3 = '2001: A Space Odyssey';
 $kintamasis4 = 'It\'s a Wonderful Life';
 
-str_replace('A','', $kintamasis);
+str_replace('A', '', $kintamasis);
 
 echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis);
 echo '<br>';
@@ -98,7 +98,7 @@ echo preg_replace('/[aoiueAOIUE]/', '', $kintamasis4);
 Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope'; 
 Surasti ir atspausdinti epizodo numerį.*/
 echo '<h3> 8 uzduotis </h3>';
-$kintamasis5='Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
+$kintamasis5 = 'Star Wars: Episode ' . str_repeat(' ', rand(0, 5)) . rand(1, 9) . ' - A New Hope';
 
 preg_match('/(\d)/', $kintamasis5, $matches);
 
@@ -109,11 +109,11 @@ echo "Numeris: $matches[0]";
 /*9. Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood”
  yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų 
  Centro, geriant sultis pas save kvartale”.*/
- echo '<h3> 9 uzduotis </h3>';
+echo '<h3> 9 uzduotis </h3>';
 
- $movieName='Don\'t Be a Menace to South Central While Drinking Your Juice in the Hood';
-
-$wordsCount=str_word_count($movieName);
+$movieName = 'Don\'t Be a Menace to South Central While Drinking Your Juice in the Hood';
+$movieName2 = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+$wordsCount = str_word_count($movieName);
 echo $wordsCount;
 echo '<br>';
 
@@ -123,4 +123,30 @@ preg_match_all($pattern, $movieName, $matches2);
 $skaicius = count($matches2[0]);
 echo '<br>';
 echo $skaicius;
- /* 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.*/
+$pattern2 = '/\b[ąčęėįšųūa-zA-Z\d]{1,5}\b/u';
+preg_match_all($pattern2, $movieName2, $matches2);
+$skaicius2 = count($matches2[0]);
+echo '<br>';
+echo $skaicius2;
+
+
+
+/* 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.*/
+echo '<h3> 10 uzduotis </h3>';
+$skaicius = rand(97, 122);
+$pirmaRaide = chr(rand(97, 122));
+$antraRaide = chr(rand(97, 122));
+$treciaRaide = chr(rand(97, 122));
+
+echo '<br>';
+$naujasStringas = $pirmaRaide . $antraRaide . $treciaRaide;
+echo "Lotyniskas zodis is triju random raidziu: $naujasStringas";
+echo '<br>';
+$letter1 = chr(rand(ord('a'), ord('z')));
+$letter2 = chr(rand(ord('a'), ord('z')));
+$letter3 = chr(rand(ord('a'), ord('z')));
+
+$newString = $letter1 . '' . $letter2 . '' . $letter3;
+echo '<br>';
+
+echo "new string using ord function: $newString";
