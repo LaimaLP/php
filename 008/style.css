@@ -1,0 +1,24 @@
+*body{
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+p {
+    width: 600px;
+    word-wrap: break-word;
+  }
+   
+  p > span {
+    color: red;
+  }
+.trecias{
+    width: 1600px;
+}
+.ketvirta{
+    font-family: monospace;
+    white-space: pre;
+}

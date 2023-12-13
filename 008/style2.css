@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.square-container {
+    font-family: monospace;
+    white-space: pre;
+    position: relative; /* Pridedame pozicijos atributą */
+}
+
+.square-container:before,
+.square-container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red; /* Raudona spalva */
+    box-sizing: border-box;
+    z-index: -1; /* Nustatome žemyn, kad būtų po tekstu */
+}
