@@ -111,6 +111,16 @@ echo "Numeris: $matches[0]";
  Centro, geriant sultis pas save kvartale”.*/
  echo '<h3> 9 uzduotis </h3>';
 
- $movieName='Don't Be a Menace to South Central While Drinking Your Juice in the Hood';
+ $movieName='Don\'t Be a Menace to South Central While Drinking Your Juice in the Hood';
 
+$wordsCount=str_word_count($movieName);
+echo $wordsCount;
+echo '<br>';
+
+$pattern = '/\b\w{1,5}\b/u';
+preg_match_all($pattern, $movieName, $matches2);
+
+$skaicius = count($matches2[0]);
+echo '<br>';
+echo $skaicius;
  /* 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.*/
