@@ -15,8 +15,6 @@ if (strlen($vardas) > strlen($pavarde)) {
     echo $vardas;
 }
 
-
-
 /*2. Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus.
 Vardą atspausdinti tik didžiosiom raidėm, o pavardę tik mažosioms. */
 echo '<br>';
