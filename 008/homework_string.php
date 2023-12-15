@@ -72,6 +72,13 @@ str_replace('A', 'A', $string2, $countBigA);
 echo '<br>';
 echo "didziuju A: $countBigA";
 
+$string3= 'An American Alphabaat in Paris';
+$findSmallA= 'a';
+$findBigA = 'A';
+$countSmallA = substr_count($string3, $findSmallA);
+$countBigA = substr_count($string3, $findBigA);
+echo "<br> small a are $countSmallA, o big are: $countBigA";
+
 /*7. Sukurti kintamąjį su stringu: “An American in Paris”. Jame ištrinti visas balses. Rezultatą 
 atspausdinti. Kodą pakartoti su stringais: “Breakfast at Tiffany's”, “2001: A Space Odyssey” ir 
 “It's a Wonderful Life”.*/
@@ -148,3 +155,4 @@ $newString = $letter1 . '' . $letter2 . '' . $letter3;
 echo '<br>';
 
 echo "new string using ord function: $newString";
+

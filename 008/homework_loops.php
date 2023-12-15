@@ -284,29 +284,58 @@ while ($ikaltuVinuSkaicius < 5) {
         $kalimuSuma1 += $vienasSmugis;
         $smugiu++;
     }
-    $kalimuSuma1=0;
+    $kalimuSuma1 = 0;
     $ikaltuVinuSkaicius++;
 }
 echo "Penkioms vinims ikalti reikejo $smugiu smugiu. <br>";
 
 $viniesIlgis = 85;
 $kalimuSuma1 = 0;
-$visoIkaltasIlgis=0;
+$visoIkaltasIlgis = 0;
 $smugiu = 0;
 $ikaltuVinuSkaicius = 0;
-while ($ikaltuVinuSkaicius <5) {
-$pataiko = rand(0,1);
-if($pataiko){
-    while ($kalimuSuma1 < $viniesIlgis) {
-        $vienasSmugis = rand(5, 20);
-        $kalimuSuma1 += $vienasSmugis;
-        $visoIkaltasIlgis += $vienasSmugis;
-        $smugiu++;
+while ($ikaltuVinuSkaicius < 5) {
+    $pataiko = rand(0, 1);
+    if ($pataiko) {
+        while ($kalimuSuma1 < $viniesIlgis) {
+            $vienasSmugis = rand(5, 20);
+            $kalimuSuma1 += $vienasSmugis;
+            $visoIkaltasIlgis += $vienasSmugis;
+            $smugiu++;
+        }
+        $ikaltuVinuSkaicius++;
+        $kalimuSuma1 = 0;
     }
-    $ikaltuVinuSkaicius++;
-    $kalimuSuma1=0;
-}
-    
-    
 }
 echo "Penkioms vinims ikalti $ikaltuVinuSkaicius reikejo $smugiu dideliu smugiu. Viso ikaltas ilgis: $visoIkaltasIlgis";
+
+
+/*11.Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200, atskirtų tarpais. 
+Skaičiai turi būti unikalūs (t.y. nesikartoti). Sugeneruokite antrą stringą, pasinaudodami pirmu, 
+palikdami jame tik pirminius skaičius (t.y tokius, kurie dalinasi be liekanos tik iš 1 ir patys savęs). 
+Skaičius stringe sudėliokite didėjimo tvarka, nuo mažiausio iki didžiausio. */
+echo '<h3> 11 uzduotis </h3>';
+
+
+$stringas = '';
+$antrasStringas = '';
+
+while (substr_count($stringas, ' ') < 50) {
+    $randomNumber = rand(1, 200);
+
+    if (strpos($stringas, $randomNumber) === false || strpos($stringas, $randomNumber) !== 0) {
+        $stringas .= rand(1, 200) . ' ';
+    }
+}
+
+for($i=0; $i< strlen($stringas); $i++){
+    if($i%2===1){
+        $antrasStringas .= $i . ' ';
+    }
+}
+
+
+echo "50-ties unikalus stringas: $stringas<br>";
+
+echo "<br>antras stringas: $antrasStringas";
+
