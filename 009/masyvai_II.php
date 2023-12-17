@@ -105,19 +105,19 @@ function createArrOfLetters()
     }
     return $childArr;
 }
-print_r(createArrOfLetters());
+// print_r(createArrOfLetters());
 
 while (count($parentArr) < 10) {
     $parentArr[] = createArrOfLetters();
 }
 echo "Parent arr:";
-print_r($parentArr);
+// print_r($parentArr);
 
 foreach ($parentArr as &$arr) { // [Z,A], [], []
     sort($arr);
 }
 echo "Sortintas:";
-print_r($parentArr);
+// print_r($parentArr);
 
 /* 4. Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad elementai kurių 
 masyvai trumpiausi eitų pradžioje. Masyvai kurie turi bent vieną “K” raidę, visada 
@@ -129,7 +129,7 @@ usort($parentArr, function ($a, $b) {
     return count($a) - count($b);
 });
 
-print_r($parentArr);
+// print_r($parentArr);
 
 
 function sortByKandCount($a, $b)
@@ -147,7 +147,7 @@ function sortByKandCount($a, $b)
 }
 usort($parentArr, 'sortByKandCount');
 echo "Sortinta pagal K";
-print_r($parentArr);
+// print_r($parentArr);
 
 /* 5. Sukurkite masyvą iš 30 elementų. Kiekvienas masyvo elementas yra masyvas 
 [user_id => xxx, place_in_row => xxx] user_id atsitiktinis unikalus skaičius 
@@ -219,4 +219,69 @@ foreach ($BigArr as &$arr) {
     }
 }
 echo "didysis arr";
-print_r($BigArr);
+// print_r($BigArr);
+
+/* 8. Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal taisyklę: 
+generuokite skaičių nuo 0 iki 5. Ir sukurkite tokio ilgio masyvą. Jeigu reikšmė yra 
+0 masyvo nekurkite. Antro lygio masyvo reikšmes užpildykite atsitiktiniais skaičiais 
+nuo 0 iki 10. Ten kur masyvo nekūrėte reikšmę nuo 0 iki 10 įrašykite tiesiogiai. */
+echo "<h3> 8 task </h3>";
+$eightArr = [];
+
+while (count($eightArr) < 10) {
+    $random = rand(0, 5);
+    if ($random !== 0) {
+        $miniArr = [];
+        while (count($miniArr) < $random) {
+            $miniArr[] = rand(0, 10);
+        }
+        $eightArr[] = $miniArr;
+    } else {
+        $eightArr[] = rand(0, 10);
+    }
+}
+// echo "antro lygio masyvas";
+// print_r($miniArr);
+echo "tevinis mastyvas";
+print_r($eightArr);
+
+
+/* 9. Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą 
+taip, kad pirmiausiai eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas,
+ to masyvo reikšmių sumos.*/
+echo '<h3> 9 task </h3>';
+$sumOfminiArr = 0;
+$arrofSum = [];
+
+foreach ($eightArr as $arr) {
+    if (is_array($arr)) {
+        $arrofSum[] = array_sum($arr);
+    } else {
+        $arrofSum[] = $arr;
+    }
+}
+print_r($arrofSum);
+array_multisort($arrofSum, $eightArr);
+echo " Sortinta naudojant array_multisort <br>";
+print_r($eightArr);
+
+
+function mySort($a, $b){
+    $sumA = is_array($a) ? array_sum($a) : $a;
+    $sumB = is_array($b) ? array_sum($b) : $b;
+    if ($sumA === $sumB) {
+        return 0;
+    }
+    return ($sumA < $sumB) ? -1 : 1;
+}
+usort($eightArr, 'mySort');
+echo "sortintas arr su usort():";
+print_r($eightArr);
+
+/* 10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų. 
+Antro lygio masyvų reikšmės masyvai su dviem elementais value ir color. Reikšmė 
+value vienas iš atsitiktinai parinktų simbolių: #%+*@裡, o reikšmė color atsitiktinai 
+sugeneruota spalva formatu: #XXXXXX. Pasinaudoję masyvų atspausdinkite “kvadratą” kurį 
+sudarytų masyvo reikšmės nuspalvintos spalva color.*/
+
+echo "<h3> 10 task </h3>";
