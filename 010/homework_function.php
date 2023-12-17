@@ -121,9 +121,112 @@ paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis mas
 kuris generuojamas pagal tokią pat salygą kaip ir pirmasis masyvas. Viską pakartokite 
 atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis elementas yra 
 lygus 0;*/
-$arrLength = rand(10, 20);
-$i = 0;
-$arr7 = [];
-while ($i < $arrLength - 1) {
-    $arr7[] = rand(0, 10);
+echo "<h3>  7 task </h3>";
+
+// $arrLength = rand(10, 20);
+// $pirmas = [];
+// while (count($pirmas) < $arrLength - 1) {
+//     $pirmas[] = rand(0, 10);
+// }
+
+function generateRandomLengthArr($min, $max, $length)
+{
+    $arr = [];
+    $i = 0;
+    while ($i < $length) {
+        $arr[] = rand($min, $max);
+        $i++;
+    }
+    return $arr;
 }
+echo "generate random length arr:";
+
+$dynamicArr = generateRandomLengthArr(0, 10, rand(10, 20) - 1);
+$dynamicArr[] = 0;
+
+$j = 0;
+while ($j < rand(1, 5)) {
+    $newArr = [];
+
+    $newArr = generateRandomLengthArr(0, 10, rand(10, 20) - 1);
+    $newArr[] = $dynamicArr;
+
+    $dynamicArr = $newArr;
+    $j++;
+}
+
+
+echo "<br>nu n u n un u dyyynamic <br> ";
+print_r($dynamicArr);
+
+
+/* 8. Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. 
+Skaičiuoti reikia visuose masyvuose ir submasyvuose.*/
+echo '<h3> 8 task </h3>';
+function sumOfNonArrayElements($arr)
+{
+    $sum = 0;
+    foreach ($arr as $item) {
+        if (is_array($item)) {
+            $sum += sumOfNonArrayElements($item);
+        } else {
+            $sum += $item;
+        }
+    }
+    return $sum;
+}
+$totalSUm = sumOfNonArrayElements($dynamicArr);
+echo "total suma: $totalSUm";
+
+/* 9. Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai 
+nuo 1 iki 33. Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis 
+skaičius, prie masyvo pridėkite dar vieną elementą- atsitiktinį skaičių nuo 1 iki 33. 
+Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. 
+Kartokite, kol sąlyga nereikalaus pridėti elemento. */
+
+echo "<h3> 9 task </h3>";
+
+function isItPrimary($number)
+{
+    for ($i = 2; $i < $number; $i++) {
+        if ($number % $i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function pushRandom(&$arr){
+
+    $newArrLength = count($arr);
+    if($newArrLength >=3){
+        $last = $arr[$newArrLength - 1];
+        $secondLast = $arr[$newArrLength - 2];
+        $thirdLast = $arr[$newArrLength - 3];
+
+        if (!isItPrimary($last) || !isItPrimary($secondLast) || !isItPrimary($thirdLast)) {
+            $arr[] = rand(1, 33);
+            pushRandom($arr);
+        }
+    }
+    return $arr;
+}
+$naujasArr = generateRandomLengthArr(1, 33, 3);
+
+
+echo "orgiginal array: <br>";
+echo implode(" ", $naujasArr);
+echo "<br>";
+
+echo "gauname panaudojus rekursine: ";
+pushRandom($naujasArr);
+echo "<br>";
+echo implode(" ", $naujasArr);
+echo "<br>";
+
+
+/* 10. Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai 
+skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis 
+mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. 
+Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite. */
+echo "<h3> 10task </h3>";
