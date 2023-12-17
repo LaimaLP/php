@@ -151,7 +151,7 @@ $letter1 = chr(rand(ord('a'), ord('z')));
 $letter2 = chr(rand(ord('a'), ord('z')));
 $letter3 = chr(rand(ord('a'), ord('z')));
 
-$newString = $letter1 . '' . $letter2 . '' . $letter3;
+$newString = $letter1. $letter2. $letter3;
 echo '<br>';
 
 echo "new string using ord function: $newString";
