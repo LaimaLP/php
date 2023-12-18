@@ -58,8 +58,9 @@ foreach ($Barr as $arr) {
     }
 }
 print_r($sum);
-echo "<br> atsakymas zzzzzz <br>";
+//echo "<br>  <br>";
 // print_r($Barr);
+
 // D Visus antro lygio masyvus “pailginkite” iki 7 elementų
 echo "<h3> 2task D </h3>";
 foreach ($Barr as &$arr) {
@@ -73,7 +74,7 @@ print_r($Barr);
 // panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė 
 // turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai 
 echo "<h3> 2task E </h3>";
-// barr= [[2,3], [5,6], [9,1]]
+
 $arrNew = [];
 foreach ($Barr as &$arr) {
     $countArrSum = 0;
@@ -83,9 +84,11 @@ foreach ($Barr as &$arr) {
     $arrNew[] = $countArrSum;
 }
 print_r($Barr);
-echo implode(",", $Barr);
+print_r($arrNew);
 
-echo implode(",", $arrN);
+// echo implode(", ", $Barr);
+
+// echo implode(",", $arrN);
 
 /* 3. Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas 
 su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos 
