@@ -1,4 +1,5 @@
 <?php
+defined('OK') || die('Not allowed');
 
 echo '<h1> F1 </h1>';
 
