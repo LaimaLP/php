@@ -10,7 +10,10 @@ echo '<h1> Big Index Middle </h1>';
 
 include_once __DIR__ . '/f1.php';
 
-// require __DIR__ . '/f1.php';
+if (file_exists(__DIR__ . '/f2.php')){
+    require __DIR__ . '/f2.php';
+}
+
 
 // require  is only one realy correct, include nenaudojamas dabar jau;
 echo '<h1> Big Index End </h1>';

@@ -4,7 +4,11 @@ $animals = require __DIR__ . '/animals.php';
 
 $animals[1] = 'Good ' . $animals[1];
 $animals[101] = 'Good tikrai  ' . $animals[1];
+$animals[102] = 'Good tikrai  ' . $animals[1];
+$animals[] = 'Good tikrai  zz' . $animals[1];
+// $animals["nu"] = 'Good tikrai  zz indexas string'. $animals[1];
 
+echo $animals[1.2];
 
 
 $json = json_encode($animals, JSON_PRETTY_PRINT);
@@ -14,6 +18,8 @@ file_put_contents(__DIR__ . '/animals.json', $json);
 $getJson = file_get_contents(__DIR__ . '/animals.json');
 
 $data = json_decode($getJson);
+
+print_r($animal['labas']='rytas');
 
 $copy = array_map(function($item){
     return $item;
@@ -25,3 +31,4 @@ print_r($copy);
 foreach ($data as $animal) {
     echo $animal . '<br>';
 }
+echo '</pre>';

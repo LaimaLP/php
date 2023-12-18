@@ -33,14 +33,19 @@ $farm = [
 
 // print_r($farm);
 // veikia ant skaicu ant stringu
-usort($farm, fn ($a, $b) => $a['name'] <=> $b['name']);
 // print_r($farm);
 
 function sortByPrice($a, $b){
     return $b['price'] <=> $a['price'];
 }
-usort($farm, 'sortByPrice');
-// print_r($farm);
+
+$sortBySound = function($a, $b){
+    return $a['name'] <=> $b['name'];
+};
+
+usort($farm, fn ($a, $b) => $a['name'] <=> $b['name']); //arrow funkcija
+usort($farm, 'sortByPrice'); //issikelus funkcija
+usort($farm, $sortBySound); //bevarde funkcija kintamajame
 
 $persons = [
     [
