@@ -196,10 +196,11 @@ function isItPrimary($number)
     return true;
 }
 
-function pushRandom(&$arr){
+function pushRandom(&$arr)
+{
 
     $newArrLength = count($arr);
-    if($newArrLength >=3){
+    if ($newArrLength >= 3) {
         $last = $arr[$newArrLength - 1];
         $secondLast = $arr[$newArrLength - 2];
         $thirdLast = $arr[$newArrLength - 3];
@@ -230,3 +231,70 @@ skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pir
 mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. 
 Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite. */
 echo "<h3> 10task </h3>";
+
+$didelisMasyvas = [];
+$result = [];
+for ($i = 0; $i < 10; $i++) {
+    $mazesniMasyvai = [];
+    for ($j = 0; $j < 10; $j++) {
+        $mazesniMasyvai[] = rand(1, 100);
+    }
+    $didelisMasyvas[] = $mazesniMasyvai;
+}
+echo "Pradinis didelis masyvas: <br>";
+print_r($didelisMasyvas);
+
+// isItPrimary(){}
+function averageOfPrime($arr)
+{
+    $totalSum = 0;
+    $countPrime = 0;
+    foreach ($arr as $subarray) {
+        if (isItPrimary($subarray)) {
+            $totalSum += $subarray;
+            $countPrime++;
+        }
+    }
+    return $countPrime > 0 ? $totalSum / $countPrime : 0;
+}
+
+function plus3toMin(&$arr)
+{
+
+    $min = $arr[0][0];
+    $minIdx = [];
+
+    foreach ($arr as $i => $subarray) {
+        foreach ($subarray as $j => $value) {
+
+            if ($value < $min) {
+                $min = $value;
+                $minIdx = [$i, $j];
+            }
+        }
+    }
+    echo "<br> $min reiksme ir jos koordinates zemiau <br>";
+    print_r($minIdx);
+    $arr[$minIdx[0]][$minIdx[1]] += 3;
+
+    return  $arr;
+}
+
+function countAverages($arr, &$result)
+{
+    foreach ($arr as $subarray) {
+        $result[] = averageOfPrime($subarray);
+    }
+    return $result;
+}
+
+while (array_sum($result) < 70) {
+    plus3toMin($didelisMasyvas);
+    countAverages($didelisMasyvas, $result);
+}
+
+echo "Final big array:\n";
+print_r($didelisMasyvas);
+
+echo "Averages:\n";
+print_r($result);

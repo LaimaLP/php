@@ -67,7 +67,7 @@ foreach ($Barr as &$arr) {
         $arr[] = rand(5, 25);
     }
 }
-// print_r($Barr);
+print_r($Barr);
 
 // E Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas 
 // panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė 
@@ -82,10 +82,10 @@ foreach ($Barr as &$arr) {
     }
     $arrNew[] = $countArrSum;
 }
-// print_r($Barr);
-// echo implode(",", $Barr);
+print_r($Barr);
+echo implode(",", $Barr);
 
-// echo implode(",", $arrN);
+echo implode(",", $arrN);
 
 /* 3. Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas 
 su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos 
@@ -210,7 +210,7 @@ function genereteRandomString()
     return $string;
 }
 echo "generuioju stringaaa";
-echo genereteRandomString();
+// echo genereteRandomString();
 
 foreach ($BigArr as &$arr) {
     while (count($arr) < 4) {
@@ -243,7 +243,7 @@ while (count($eightArr) < 10) {
 // echo "antro lygio masyvas";
 // print_r($miniArr);
 echo "tevinis mastyvas";
-print_r($eightArr);
+// print_r($eightArr);
 
 
 /* 9. Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą 
@@ -260,10 +260,10 @@ foreach ($eightArr as $arr) {
         $arrofSum[] = $arr;
     }
 }
-print_r($arrofSum);
+// print_r($arrofSum);
 array_multisort($arrofSum, $eightArr);
 echo " Sortinta naudojant array_multisort <br>";
-print_r($eightArr);
+// print_r($eightArr);
 
 
 function mySort($a, $b){
@@ -276,7 +276,7 @@ function mySort($a, $b){
 }
 usort($eightArr, 'mySort');
 echo "sortintas arr su usort():";
-print_r($eightArr);
+// print_r($eightArr);
 
 /* 10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų. 
 Antro lygio masyvų reikšmės masyvai su dviem elementais value ir color. Reikšmė 
