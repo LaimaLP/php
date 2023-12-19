@@ -16,8 +16,14 @@ if (($_GET['color'] ?? '')) {
 
 <body style="background-color: <?php echo $color ?>">
     <h1> 2 Task </h1>
-    <p> Sukurti puslapį panašų į 1 uždavinį, tiktai antro linko su perduodamu kintamuoju nedarykite, o vietoj to padarykite, URL eilutėje ranka įvedus GET kintamąjį color su RGB spalvos kodu (pvz color=ff1234) puslapio fono spalva pasidarytų tokios spalvos.</p>
     <a href="http://localhost/backEnd/php/WEBmechanika/second.php/"> Homework_WEB </a>
+
+
+    <!-- 3uzd -->
+    <form action="http://localhost/backEnd/php/WEBmechanika/second.php/" method="get">
+        <input type='text' name='color'>
+        <button type="submit"> GET COLOR</button>
+    </form>
 </body>
 
 </html>
