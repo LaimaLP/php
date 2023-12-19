@@ -158,6 +158,7 @@ echo "Sukurtas masyvas: " . implode(', ', $arrLetters) . "<br>";
  reikšmes. Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių 
  kombinacijų gavote.*/
 
+echo "<h3>5 task </h3> ";
 $lettersArray1 = [];
 $lettersArray2 = [];
 $lettersArray3 = [];
@@ -172,7 +173,7 @@ for ($i = 0; $i < 200; $i++) {
     $joindedArray[] = $lettersArray1[$i] . $lettersArray2[$i] . $lettersArray3[$i];
 }
 
-echo "<br> cia joined array:";
+// echo "<br> cia joined array:";
 // print_r($joindedArray);
 // foreach($bigArr as $letter) {}
 
@@ -180,13 +181,45 @@ echo "<br> cia joined array:";
 
 $uniqueValuesCount = count(array_count_values($joindedArray));
 $uniqueCombinationsCount = count(array_unique($joindedArray));
+$unikaliosReiksmes = [];
 
+foreach ($joindedArray as $kombinacija) {
+    // Use array_keys to find all occurrences of $kombinacija in $joindedArray
+    $key = array_keys($joindedArray, $kombinacija);
 
+    // Check if the count of occurrences is exactly 1
+    if (count($key) === 1) {
+        $unikaliosReiksmes[] = $kombinacija;
+    }
+}
+// $unikaliosReiksmes = [];
+
+// Tikrinam kokios kombinacijos masyve $joindedArray kartojasi tik 1 karta,
+// tai bus unikalios masyvo reiksmes.
+
+// foreach ($joindedArray as $key => $kombinacija) {
+//     $key = [];
+    // array_keys is $joindedArray masyvo isrenka visus indeksus, kuriu value
+    // yra musu konkreti kombinacija ir prideda i $key array,
+    // jei $key length yra 1, vadinasi $kombinacija visame $joindedArray masyve
+    // kartojasi tik viena karta, todel ta kombinacija pushinam i $unikaliosReiksmes
+//     $key = array_keys($joindedArray, $kombinacija);
+//     echo "issispausdinu key: ";
+//     print_r($key);
+//     if(count($key)===1){
+//         $unikaliosReiksmes[]=$kombinacija;
+//     }
+    
+// }
 
 
 echo "Sujungtas masyvas: " . implode(', ', $joindedArray) . "<br>";
-echo "Unikalių reikšmių skaičius: $uniqueValuesCount<br>";
-echo "Unikalių kombinacijų skaičius: $uniqueCombinationsCount <br>";
+echo "Unikalių reikšmių skaičius: <br>";
+echo  count($unikaliosReiksmes) ;
+echo "<br>Unikalių kombinacijų skaičius: $uniqueCombinationsCount <br>";
+
+
+
 
 
 /* 6. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. 

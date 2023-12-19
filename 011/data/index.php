@@ -1,37 +1,31 @@
 <?php
 echo '<pre>';
+
 $animals = require __DIR__ . '/animals.php';
 
 $animals[1] = 'Good ' . $animals[1];
-$animals[101] = 'Good tikrai  ' . $animals[1];
-$animals[102] = 'Good tikrai  ' . $animals[1];
-$animals[] = 'Good tikrai  zz' . $animals[1];
-// $animals["nu"] = 'Good tikrai  zz indexas string'. $animals[1];
 
-echo $animals[1.2];
-echo '<br> animal  arejus: <br>';
-print_r($animals);
+$animals[301] = 'Good ' . $animals[1];
 
-
-$json = json_encode($animals, JSON_PRETTY_PRINT); //uzkoduojami animal i json faila
+$json = json_encode($animals);
 $ser = serialize($animals);
-file_put_contents(__DIR__ . '/animals.json', $json);
 
-$getJson = file_get_contents(__DIR__ . '/animals.json'); //skkaito json faila ir grazina kintamuoju
+file_put_contents(__DIR__ . '/animals.json', $json);
+file_put_contents(__DIR__ . '/animals.ser', $ser);
+
+$getJson = file_get_contents(__DIR__ . '/animals.json');
 $getSer = file_get_contents(__DIR__ . '/animals.ser');
 
-$data = json_decode($getJson); //dekoduojamas atgal is json i array kintamuoju jau $data
+$data = json_decode($getJson, true);
 $data = unserialize($getSer);
 
-$copy = array_map(function($item){ //shallow copy
+
+$copy = array_map(function($item) {
     return $item;
 }, $data);
-echo "<br> copy: <br>";
+
+
 print_r($copy);
 
 
-echo '<br>data duomenys: <br>';
-foreach ($copy as $animal) {
-    echo $animal . '<br>';
-}
 echo '</pre>';
