@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h1> Hello WEB mechanics! </h1>
+    <h2><?php echo $kas ?? 'Nieko nėra' ?></h2>
 
     <h2><?php echo $kas ?? 'Nieko nera' ?> </h2>
     <form action="http://localhost/backEnd/php/012/handle.php" method="post">
