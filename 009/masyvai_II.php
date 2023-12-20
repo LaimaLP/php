@@ -172,7 +172,7 @@ while ($i < 10) {
     $BigArr[] = info();
     $i++;
 }
-// print_r($BigArr);
+print_r($BigArr);
 
 /* 6. Išrūšiuokite 5 uždavinio masyvą pagal user_id didėjančia tvarka. 
 Ir paskui išrūšiuokite pagal place_in_row mažėjančia tvarka. */
@@ -190,7 +190,7 @@ function sortasSorte($a, $b)
 usort($BigArr, "sortasSorte");
 
 echo "sortinta pagal ID ir row";
-// print_r($BigArr);
+print_r($BigArr);
 
 echo "sortinta pagal place in row";
 usort($BigArr, function ($a, $b) {

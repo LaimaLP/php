@@ -1,9 +1,8 @@
 <?php
-if ($_SERVER['PHP_SELF'] == "/backEnd/php/WEBmechanika/blue.php/") {
+if (($_GET['as'] ?? '') == 'melynas') {
     header('Location: http://localhost/backEnd/php/WEBmechanika/red.php/');
-    die;
+    exit;
 }
-
 ?>
 
 <html lang="en">
@@ -15,12 +14,13 @@ if ($_SERVER['PHP_SELF'] == "/backEnd/php/WEBmechanika/blue.php/") {
 </head>
 
 <body style="background-color: blue">
-<?php print_r($_SERVER['PHP_SELF']) ?>
     <h1> 4 Task </h1>
     <br>
     <br>
     <br/>
-    <a onclick="test()"; href="http://localhost/backEnd/php/WEBmechanika/blue.php/"> Go to Blue page </a>
+    <a href="http://localhost/backEnd/php/WEBmechanika/blue.php/?as=melynas"> Go to Blue page </a>
+ 
+
 </body>
 
 </html>

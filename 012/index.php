@@ -20,8 +20,6 @@
 
     print_r($_SERVER['REQUEST_METHOD']);
 
-
-
     if (($_GET['kas'] ?? '') == 'kazkas') {
         echo '<h2>Labas, kazkas! </h2>';
     }

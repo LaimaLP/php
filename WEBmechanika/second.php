@@ -8,7 +8,7 @@
 </head>
 <?php
 if (($_GET['color'] ?? '')) {
-    $color = '#' . $_GET['color'];
+    $color = $_GET['color'];
 } else {
     $color = "black;";
 }
@@ -21,7 +21,7 @@ if (($_GET['color'] ?? '')) {
 
     <!-- 3uzd -->
     <form action="http://localhost/backEnd/php/WEBmechanika/second.php/" method="get">
-        <input type='text' name='color'>
+        <input type='color' name='color'>
         <button type="submit"> GET COLOR</button>
     </form>
 </body>
