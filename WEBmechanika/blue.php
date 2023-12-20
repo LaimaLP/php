@@ -1,6 +1,6 @@
 <?php
 if (($_GET['as'] ?? '') == 'melynas') {
-    header('Location: http://localhost/backEnd/php/WEBmechanika/red.php/');
+    header('Location: http://localhost/backEnd/php/WEBmechanika/red.php?color=');
     exit;
 }
 ?>
