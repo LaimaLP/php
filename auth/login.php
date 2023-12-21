@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start(); //jei prisijuges, neturi rodyti lohin psl, uzdedama salyga
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'sitas yra prisilogines') {
         header('Location: http://localhost/backEnd/php/auth/index.php');
         die;

@@ -1,11 +1,12 @@
 <?php
-    session_start();
+    session_start(); // jeigu nera logino, arba loginas nelygus, redirectinam prisiloginti
     if (!isset($_SESSION['login']) || $_SESSION['login'] != 'sitas yra prisilogines') {
         header('Location: http://localhost/backEnd/php/auth/login.php');
         die;
     }
 ?>
-<!DOCTYPE html>
+<!-- //priesingu atveju rodom si psl -->
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
