@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['QUERY_STRING'] !== '') {
     <?php echo $_SERVER['QUERY_STRING'] ?>
 
 
-    <form action="http://localhost/backEnd/php/WEBmechanika/sixT.php" method="GET">
-        <input type='text' name='green'>
+    <form action="" method="GET">
+        <input type='hidden' name='green'>
         <button type="submit"> by GET method</button>
     </form>
 
@@ -57,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['QUERY_STRING'] !== '') {
     <br>
     <br>
 
-    <form action="http://localhost/backEnd/php/WEBmechanika/sixT.php" method="POST">
-        <input type='text' name='yellow'>
+    <form action="" method="POST">
+        <input type='hidden' name='yellow'>
         <button type="submit"> by POST method</button>
     </form>
 </body>

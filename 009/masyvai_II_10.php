@@ -23,7 +23,6 @@ function genereteThirdArr()
     return $thirdArr;
 }
 
-
 $thirdArr = [];
 
 while (count($firstArr) < 10) {
@@ -33,8 +32,6 @@ while (count($firstArr) < 10) {
     }
     $firstArr[] = $secondArr;
 }
-
-
 
 foreach($firstArr as $arr){
     foreach($arr as $item){

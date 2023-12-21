@@ -3,10 +3,10 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cb = $_POST['cb'] ?? [];
     $count = count($cb);
+    
     header('Location: http://localhost/backEnd/php/013/u9.php?count=' . $count);
     die;
 }
-
 
 if (isset($_GET['count'])) {
     $count = $_GET['count'];
@@ -15,12 +15,9 @@ if (isset($_GET['count'])) {
     $color = 'black';
     $letters = range('A', 'J');
     $random3_10 = rand(3, 10);
+    echo $random3_10;
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +29,7 @@ if (isset($_GET['count'])) {
 
 <?php if ($color == 'white'): ?>
 
-    <h1 style="color:skyblue;">You have selected <?= $count ?> letters</h1>
+    <h1 style="color:skyblue;">You have selected <?= $count ?> letters of  all  generated</h1>
     <a href="http://localhost/backEnd/php/013/u9.php">BACK</a>
 
 <?php else: ?>

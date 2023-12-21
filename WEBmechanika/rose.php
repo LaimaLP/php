@@ -1,13 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    header('Location: http://localhost/backEnd/php/WEBmechanika/pink.php');
+    header('Location: ./pink.php');
     exit;
 }
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,9 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    header('Location: http://localhost/backEnd/php/WEBmechanika/rose.php');
-    exit;
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body style="background-color: pink;">
     <h1> Hello PINK </h1>
 
-    <form action="http://localhost/backEnd/php/WEBmechanika/rose.php" method="POST">
+    <form action="./rose.php" method="post">
         <button type="submit"> GO TO ROSE</button>
     </form>
 
 </body>
 
 </html>
+
