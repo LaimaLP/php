@@ -1,39 +1,39 @@
 <?php
-    session_start();
+    session_start(); //optinional: jei esi prisijuges, neduoda registruotis
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'sitas yra prisilogines') {
-        header('Location: http://localhost/capybaros/auth/index.php');
+        header('Location: http://localhost/backEnd/php/auth//index.php');
         die;
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+//tikrinam ar passwordai sutampa
         if ($_POST['password'] != $_POST['password2']) {
             $_SESSION['error'] = 'Passwords do not match';
-            $_SESSION['old_data'] = $_POST;
-            header('Location: http://localhost/capybaros/auth/register.php');
+            $_SESSION['old_data'] = $_POST; //pries numirdami i sesija irasom old data ir 42eil
+            header('Location: http://localhost/backEnd/php/auth/register.php');
             die;
         }
-        $users = file_get_contents(__DIR__.'/data/users.ser');
-        $users = unserialize($users);
-        // check user existence
-        foreach ($users as $user) {
+        $users = file_get_contents(__DIR__.'/data/users.ser'); //jei metodas post, paimam duomenis, isserializuojam
+        $users = unserialize($users); 
+        // check user existence, kad nesikartotu tuo paciu emailu
+        foreach ($users as $user) { 
             if ($user['email'] == $_POST['email']) {
                 $_SESSION['error'] = 'User with this email already exists';
                 $_SESSION['old_data'] = $_POST;
-                header('Location: http://localhost/capybaros/auth/register.php');
+                header('Location: http://localhost/backEnd/php/auth/register.php');
                 die;
             }
         }
-        $user = [
+        $user = [ //po unser sukuria masyva
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'password' => sha1($_POST['password']),
         ];
-        $users[] = $user;
+        $users[] = $user; //idedame i users, naujus userius suserializ, kai prisiregina, redirectinam i logina
         file_put_contents(__DIR__.'/data/users.ser', serialize($users));
-        header('Location: http://localhost/capybaros/auth/login.php');
+        header('Location: http://localhost/backEnd/php/auth/login.php');
         die;
     }
-
+    
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);

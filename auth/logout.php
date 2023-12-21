@@ -10,5 +10,5 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'sitas yra prisilogines')
     unset($_SESSION['login']); //viska unsetinam ir mirsta
     unset($_SESSION['name']);
 }//jei ir neprisilogine, siunciam kitur
-header('Location: http://localhost/capybaros/auth/index.php');
+header('Location: http://localhost/backEnd/php/auth/index.php');
 die;
