@@ -7,6 +7,8 @@
     // [boxId: 45, amount: 150],
 // ]
 
+/*  */
+
 $boxes = [];
 
 for ($i = 0; $i < 17; $i++) {
@@ -15,5 +17,5 @@ for ($i = 0; $i < 17; $i++) {
         'amount' => rand(1, 1000),
     ];
 }
-
+//dezes surasome i faila, json ir dar graziai isdesto
 file_put_contents(__DIR__ . '/../data/boxes.json', json_encode($boxes, JSON_PRETTY_PRINT));

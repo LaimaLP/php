@@ -1,3 +1,4 @@
+<!-- Read skaito info ir ja atvaziduoja -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,9 @@
     <title>Read</title>
 </head>
 <body>
-
+<!-- iskeliam besikartojanti meniu atskirai -->
     <?php require __DIR__ . '/parts/nav.php' ?>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-2">
@@ -34,8 +36,9 @@
                 </div>
             </div>
         </li>
-
+ <!-- 1. pasiimamm deze su mandarinai, getinam contenta, nusiskaitome ir tada decodinam, ideddam true, kad visada duotu masyva . jei nebutu true ir tuscias masyvas tuomet json taptu objektas ir foreachas nebeveiktu -->
         <?php $boxes = json_decode(file_get_contents(__DIR__ . '/data/boxes.json'), true) ?>
+      <!-- darom sarasiuka:  -->
         <?php foreach ($boxes as $box) : ?>
         <li class="list-group-item">
             <div class="container">
