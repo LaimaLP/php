@@ -1,7 +1,6 @@
-<!-- Read skaito info ir ja atvaziduoja -->
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +14,6 @@
             height: 100vh;
             width: 100%;
         }
-
         .delete-container {
             width: 400px;
             height: 200px;
@@ -27,7 +25,6 @@
             align-items: center;
             flex-direction: column;
         }
-
         .delete-container div {
             display: flex;
             justify-content: center;
@@ -37,22 +34,18 @@
         }
     </style>
 </head>
-
 <body>
     <div class="delete">
         <div class="delete-container">
             <h2>Are you sure?</h2>
-            <div> 
-                <!-- perduodam id kad zinoti ka triname, post metodu, perduodam i destroy faila -->
-                <form action="http://localhost/backEnd/php/crud/destroy.php?id=<?=$_GET['id']?? 0 ?>" method="post">
-                    <button type="submit" class="btn btn-outline-primary"> Yes </button>
+            <div>
+                <form action="http://localhost/backEnd/php/crud/destroy.php?id=<?= $_GET['id'] ?? 0 ?>" method="post">
+                    <button type="submit" class="btn btn-outline-primary">Yes</button>
                 </form>
-                <a href="http://localhost/backEnd/php/crud/read.php" type="submit" class="btn btn-outline-secondary"> No </a>
+                <a href="http://localhost/backEnd/php/crud/read.php" class="btn btn-outline-secondary">No</a>
             </div>
+            
         </div>
     </div>
-
-
 </body>
-
 </html>

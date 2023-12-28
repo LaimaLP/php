@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!-- Read skaito info ir ja atvaziduoja -->
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +53,8 @@
                     <div class="col-8">
                        
                     <a href="http://localhost/backEnd/php/crud/show.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-success btn-sm">Show</a>
+                    <a href="http://localhost/backEnd/php/crud/edit.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-info btn-sm">Edit</a>
+                   
                     <a href="http://localhost/backEnd/php/crud/delete.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                     </div>
                 </div>
