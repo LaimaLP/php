@@ -34,11 +34,14 @@
         }
     </style>
 </head>
+
 <body>
     <div class="delete">
         <div class="delete-container">
             <h2>Are you sure?</h2>
             <div>
+                <!-- nukreipiam post metodu i proceso puslapi, destroy. reikia zinoti ka destroy, todel siunciam id, 
+                kuri gavom paspaude nuoroda per GET -->
                 <form action="http://localhost/backEnd/php/crud/destroy.php?id=<?= $_GET['id'] ?? 0 ?>" method="post">
                     <button type="submit" class="btn btn-outline-primary">Yes</button>
                 </form>

@@ -23,6 +23,7 @@
                     <div class="card-body">
                         <form action="http://localhost/backEnd/php/crud/store.php" method="post">
                             <div class="mb-3">
+                                <!-- iterpiam JS, kad rodytu skaicius range -->
                                 <label class="form-label">Amount: <span id="amount"></span></label>
                                 <input type="range" class="form-range" name="amount" min="0" max="1000" value="10">
                             </div>
