@@ -10,6 +10,8 @@
 <body>
 
     <?php require __DIR__ . '/parts/nav.php' ?>
+    <?php require __DIR__ . '/parts/msg.php' ?>
+
 <!-- 1.kad rodytu tik ta ka norime reikia pasiimti ID, jei id nepateikia, ji yra 0. Tuomet pasiimam visas dezes
   -->
     <?php 

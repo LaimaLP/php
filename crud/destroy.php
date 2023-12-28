@@ -14,4 +14,6 @@ foreach ($boxes as $index => $box) {
 $boxes = array_values($boxes);
 file_put_contents(__DIR__ . '/data/boxes.json', json_encode($boxes, JSON_PRETTY_PRINT));
 
+$_SESSION['success'] = "Box #$id deleted";
+
 header('Location: http://localhost/backEnd/php/crud/read.php');
