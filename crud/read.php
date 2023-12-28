@@ -50,7 +50,9 @@
                         <?= $box['amount'] ?>
                     </div>
                     <div class="col-8">
-                        <a href="http://localhost/backEnd/php/crud/show.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-success btn-sm">Show</a>
+                       
+                    <a href="http://localhost/backEnd/php/crud/show.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-success btn-sm">Show</a>
+                    <a href="http://localhost/backEnd/php/crud/delete.php?id=<?= $box['boxId'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                     </div>
                 </div>
             </div>
