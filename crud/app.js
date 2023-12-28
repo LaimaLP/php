@@ -8,7 +8,7 @@ if (rangeInput) {
   });
 }
 
-const msg = document.querySelector('[data-removable]');
+const msg = document.querySelector('[data-removable]'); //jei turim msg kuriame yra poreikis kazka isnaikinti
 
 if (msg) {
   setTimeout(_ => {

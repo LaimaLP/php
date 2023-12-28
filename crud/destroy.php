@@ -15,6 +15,6 @@ $boxes = array_values($boxes); //reindexina reiksmes, vel padaro masyva.  Po try
 //Su ser taip nereikia.
 file_put_contents(__DIR__ . '/data/boxes.json', json_encode($boxes, JSON_PRETTY_PRINT));
 
-$_SESSION['success'] = "Box #$id deleted";
+$_SESSION['error'] = "Box #$id deleted";
 
 header('Location: http://localhost/backEnd/php/crud/read.php');

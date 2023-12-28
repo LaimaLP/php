@@ -31,13 +31,13 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-2">
-                <form action="http://localhost/backEnd/php/crud/read.php" method="get">
+                <form action="" method="get">
                     <div class="mb-3">
                         <label for="amount" class="form-label">Sort By</label>
                         <select class="form-select" name="sort">
                             <option value="default" <?= ($_GET['sort'] ?? '') == 'default' ? 'selected' : '' ?>>Default</option>
-                            <option value="amount_asc" <?= ($_GET['sort'] ?? '') == 'amount_asc' ? 'selected' : '' ?> >By amount 0-9</option>
-                            <option value="amount_desc" <?= ($_GET['sort'] ?? '') == 'amount_desc' ? 'selected' : '' ?> >By amount 9-0</option>
+                            <option value="amount_asc" <?= ($_GET['sort'] ?? '') == 'amount_asc' ? 'selected' : '' ?>>By amount 0-9</option>
+                            <option value="amount_desc" <?= ($_GET['sort'] ?? '') == 'amount_desc' ? 'selected' : '' ?>>By amount 9-0</option>
                             <option value="id_asc" <?= ($_GET['sort'] ?? '') == 'id_asc' ? 'selected' : '' ?>>By id 0-9</option>
                             <option value="id_desc" <?= ($_GET['sort'] ?? '') == 'id_desc' ? 'selected' : '' ?>>By id 9-0</option>
                         </select>
