@@ -1,11 +1,20 @@
 <?php
+//magic metodai, jo specialiai nereikia paleidineti:
+/* 1. __constructor;
+    2. __get
+*/
 
+/* kai savybe idedame i private, tuomet neleidziam programeriui jos modifikuoti, jis gali prie jos prieiti per public f-ja, 
+taciau negali pakeisti. Kad netycia nepridarytu nesamoniu*/
 class Bebras {
 
     public $spalva = 'ruda';
     private $svoris = 'nezinomas'; // dar nepasverem
     private $ugis = 1.5; // metrais
 
+//magic method get
+/*  leidzia kreiptis i nematoma ar net neegzsituojancia savybe ir grazina result. Kintamojo kintamasis. pasirasom tam tikrais propsais, kad duotum to ko mums reikia
+galim sufeikinti kintamuosius, net jam nesant galim prirasyti ir priskirti */
     public function __get($prop) {
 
         return match($prop) {
@@ -21,12 +30,13 @@ class Bebras {
         return 'uodega: ' . rand(20, 30) . ' cm';
     }
 
-    // getter'is
+    // getter'is (kur kazka gaunam, pasiziurim)
     public function koksSvoris() {
         return $this->svoris;
     }
 
     // setter'is
+    /* perimam kontrole, ribojam, kad nesugadintu to kuom leidziam naudotis */
     public function duotiMaisto($kg) {
         if ($kg > 5) {
             echo 'Per daug <br>';

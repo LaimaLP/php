@@ -22,7 +22,7 @@ class Nso{
 //var_dump parodo viska, ivardija protected ir private, naudojamas debuginimui. Mato, bet realiai negali nieko su kuo padaryti.
     public $number;
 
-//METODAI:
+//magic METODAI: naudojamas atlikti parengiamuosius veiksmus objekto kurime (identifikacijos, konfiguracijos)
     public function __construct($number, $color='white'){
         $this->number = $number;
         $this->color= $color;
