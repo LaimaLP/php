@@ -67,7 +67,7 @@
                 </div>
             </div>
         </li>
-        <!-- 1. pasiimamm deze su mandarinai, getinam contenta, nusiskaitome ir tada decodinam, ideddam true, kad visada duotu masyva . jei nebutu true ir tuscias masyvas tuomet json taptu objektas ir foreachas nebeveiktu -->
+        <!-- 1. pasiimamm deze su mandarinais, getinam contenta, nusiskaitome ir tada decodinam, ideddam true, kad visada duotu masyva . jei nebutu true ir tuscias masyvas tuomet json taptu objektas ir foreachas nebeveiktu -->
         <?php $boxes = json_decode(file_get_contents(__DIR__ . '/data/boxes.json'), true) ?>
         <!-- darom sarasiuka:  -->
 
