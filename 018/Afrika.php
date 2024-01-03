@@ -13,7 +13,8 @@ class Afrika{
         echo 'Hello, Africa <br>';
     }
 }
-/*  1. private (stalcius) nepaveldimi, protected (butas) pasiveldi, jo isoreje nematome, negalime pasikreipti
+/*  
+    1. private (stalcius) nepaveldimi, protected (butas) pasiveldi, jo isoreje nematome, negalime pasikreipti
     2. Overwritinimas galimas; 
     3. paveldimi metodai ir properciai;
     4. PHP'e nera overload'o. (kitose kalbose: kai viena klase gali tureti 2-3 metodus tuo paciu vardu, 
