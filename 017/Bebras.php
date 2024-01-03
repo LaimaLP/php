@@ -10,12 +10,31 @@ class Bebras {
 
     public $spalva = 'ruda';
     private $svoris = 'nezinomas'; // dar nepasverem
-    private $ugis = 1.5; // metrais
+    private $ugis = 1.0; // metrais
 
 //magic method get
 /*  leidzia kreiptis i nematoma ar net neegzsituojancia savybe ir grazina result. Kintamojo kintamasis. pasirasom tam tikrais propsais, kad duotum to ko mums reikia
 galim sufeikinti kintamuosius, net jam nesant galim prirasyti ir priskirti */
-    public function __get($prop) {
+ 
+public function __construct(){
+    echo '<br> Bebras atejo <br>';
+}
+public function __desstruct(){
+    echo '<br> Bebras isejo <br>';
+}
+
+
+//nurodo, ka man reikia i obj sudeti
+public function __serialize():array{
+    return [
+        'ugis'=>$this->ugis,
+        'svoris'=>$this->svoris
+    ];
+}
+
+
+
+public function __get($prop) {
 
         return match($prop) {
             'ugis' => $this->ugis . ' metrai',

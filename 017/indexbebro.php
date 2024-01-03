@@ -26,3 +26,13 @@ $bebras1->duotiMaisto(4);
 
 echo $bebras1->koksSvoris();
 echo '<br>';
+
+$bebras1->spalva='juoda';
+
+
+$sb1 = serialize($bebras1);
+
+echo $sb1;
+
+echo '<pre>';
+var_dump(unserialize($sb1));
