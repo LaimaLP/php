@@ -5,18 +5,11 @@
 require __DIR__ . '/Kibiras1.php';
 require __DIR__ . '/Pinigine.php';
 
-
 $k1 = new Kibiras1;
 
-
-
 echo 'Pridedu daug akmenų:' .$k1->pridetiDaugAkmenu(15);
-
 echo '<br> Pridedu dar vieną akmenį:' .$k1->prideti1Akmeni(); ;
-
-
 echo '<br> Pririnkta akmenų: ' . $k1->kiekPririnktaAkmenu();
-
 
 /* 2. Sukurti klasę Pinigine. Sukurti dvi privačias savybes popieriniaiPinigai ir 
 metaliniaiPinigai. Parašyti metodą ideti($kiekis), kuris prideda pinigus į piniginę. 
@@ -94,3 +87,29 @@ echo "<br>";
 $st200->ipilti(200);
 $st150->ipilti($st200->ispilti());
 echo "i 100ml stikline ipyliau: " .$st100->ipilti($st150->ispilti()). "<br>"; 
+
+
+/* 7. Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys turi konstantą DYDIS lygią
+ 500. Grybas turi tris privačias savybes: valgomas, sukirmijes, svoris. Kuriant Grybo 
+ objektą jo savybės turi būti atsitiktinai priskiriamos taip: valgomas- true arba 
+ false, sukirmijes- true arba false ir svoris- nuo 5 iki 45. Eiti grybauti, t.y. 
+ Kurti naujus Grybas objektus, jeigu nesukirmijęs ir valgomas dėti į Krepsi objektą, 
+ kol bus pririnktas pilnas krepšys nesukirmijusių ir valgomų grybų (gali būti biški 
+ daugiau nei DYDIS). */
+
+ echo '<br> 7 uzd grybaujam: <br>';
+
+require __DIR__ . '/Grybas.php';
+require __DIR__ . '/Krepsys.php';
+
+$g1 = new Grybas;
+$g2 = new Grybas;
+
+echo '<pre>';
+print_r($g1);
+print_r($g2);
+
+
+
+
+
