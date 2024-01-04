@@ -6,10 +6,18 @@ require __DIR__ . '/Kibiras1.php';
 require __DIR__ . '/Pinigine.php';
 
 $k1 = new Kibiras1;
+$k2 = new Kibiras1;
+$k3 = new Kibiras1;
 
-echo 'Pridedu daug akmenų:' .$k1->pridetiDaugAkmenu(15);
-echo '<br> Pridedu dar vieną akmenį:' .$k1->prideti1Akmeni(); ;
-echo '<br> Pririnkta akmenų: ' . $k1->kiekPririnktaAkmenu();
+$k1->pridetiDaugAkmenu(15);
+$k1->prideti1Akmeni(); 
+echo '<br> Pririnkta akmenų pirmam: ' . $k1->kiekPririnktaAkmenu();
+
+$k2->pridetiDaugAkmenu(15);
+echo '<br> Pririnkta akmenų antram: ' . $k2->kiekPririnktaAkmenu();
+
+$k3->prideti1Akmeni(); 
+echo '<br> Pririnkta akmenų treciam: ' . $k3->kiekPririnktaAkmenu();
 
 /* 2. Sukurti klasę Pinigine. Sukurti dvi privačias savybes popieriniaiPinigai ir 
 metaliniaiPinigai. Parašyti metodą ideti($kiekis), kuris prideda pinigus į piniginę. 
