@@ -1,6 +1,14 @@
 <?php
-
+/*  kaip apriboti ieno objekto sukurima is vienos klases*/
 require __DIR__ ."/Cart.php";
+
+
+
+/* uzdraudem su privaciu klases konctructorius sukurti objektus naudojant new.
+$cartOne = new Cart;
+$cartThree = new Cart;
+*/
+
 
 $cartOne = Cart::getCart();
 $cartThree = Cart::getCart();
