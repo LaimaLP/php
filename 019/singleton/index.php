@@ -2,11 +2,11 @@
 
 require __DIR__ ."/Cart.php";
 
-$cartOne = new Cart;
+$cartOne = Cart::getCart();
 
-
-$cartTwo = new Cart;
+$cartTwo = Cart::getCart();
 
 echo '<pre>';
+
 var_dump($cartOne); 
 var_dump($cartTwo);
