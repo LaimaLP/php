@@ -1,17 +1,22 @@
 <?php
 
-class Afrika{
+
+class Afrika {
+
     public $zemynas = 'Afrika';
-    public $gyventojai = 10000000;
+    public $gyventojai = 1000000000;
+    public $socialinisTinklas = 'Facebook';
 
-    protected $mano ='protected cia';
+    protected $mano = 'Stebuklas';
 
-    public function padainuok(){
-        echo "lalalalala";
+    public function __construct() {
+        echo 'Hello, Afrika' . '<br>';
     }
-    public function __construct(){
-        echo 'Hello, Africa <br>';
+
+    public function padainuok() {
+        echo 'La la la' . '<br>';
     }
+
 }
 /*  
     1. private (stalcius) nepaveldimi, protected (butas) pasiveldi, jo isoreje nematome, negalime pasikreipti
