@@ -23,6 +23,11 @@ class Cart
 //uzdraudziame klonuoti objekta
     private function __clone(){ }
 
+    private function __wakeup(){ }
+
+  // sitas nenaudojamas, geriau ir nedeti, kitu tikslu naudojam serialize:
+    private function __serialize(){ }
+
     //wake up sukuria, bet warning duoda, o serialize nesukuria ir warning
     //sito nenaudojam nes dedant i DB serializuojam, kitais atvejais naudojam, ne baninant.
     // private function __serialize(){

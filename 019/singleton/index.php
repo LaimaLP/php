@@ -14,6 +14,7 @@ $cartOne = Cart::getCart();
 $cartThree = Cart::getCart();
 //obj nuklonavimas, gaunam toki pati, bet kita
 $cartTwo = clone $cartOne;
+$cartTwo = unserialize(serialize($cartOne));
 
 echo '<pre>';
 
