@@ -12,8 +12,9 @@ $tv2->perjungtiPrograma(2);
 $tv3->perjungtiPrograma(3);
 
 $tv4 = new Tv('Panasonic', 'Jonas');
+//cia jau negalima sakyti self, nes nera konteksto, konkreciai nurodoma, kurios klases
+Tv::$kanalai = $naujiKanalai;
 
-// Tv::$kanalai = $naujiKanalai;
 Tv::keistiKanalus($naujiKanalai);
 
 $tv1->perjungtiPrograma(1);
