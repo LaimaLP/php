@@ -114,11 +114,8 @@ require __DIR__ . '/Krepsys.php';
 $krp = new Krepsys;
 echo '<pre>';
 
-
-
 while ($krp->dydis > $krp->pririnktuSvoris) {
-
   $krp->deti(new Grybas);
 }
-echo "nu nu: ";
+echo "Pririnktu grybu svoris: ";
 print_r($krp->pririnktuSvoris);
