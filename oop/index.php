@@ -10,13 +10,13 @@ $k2 = new Kibiras1;
 $k3 = new Kibiras1;
 
 $k1->pridetiDaugAkmenu(15);
-$k1->prideti1Akmeni(); 
+$k1->prideti1Akmeni();
 echo '<br> Pririnkta akmenų pirmam: ' . $k1->kiekPririnktaAkmenu();
 
 $k2->pridetiDaugAkmenu(15);
 echo '<br> Pririnkta akmenų antram: ' . $k2->kiekPririnktaAkmenu();
 
-$k3->prideti1Akmeni(); 
+$k3->prideti1Akmeni();
 echo '<br> Pririnkta akmenų treciam: ' . $k3->kiekPririnktaAkmenu();
 
 /* 2. Sukurti klasę Pinigine. Sukurti dvi privačias savybes popieriniaiPinigai ir 
@@ -40,21 +40,21 @@ echo "Yra pinigu suma: " . $p->skaiciuoti();
 Sukurkite dar vieną klasę KibirasNePo1, kuri extendina klasę Kibiras3. KibirasNePo1 
 turi naudoti visus tėvinius metodus, bet metodas Prideti1Akmeni() turi pridėti ne vieną
  o atsitiktinį akmenų kiekį nuo 2 iki 5. Sukurkite KibirasNePo1 objektą ir pademonstruokite
-  veikimą.*/ 
+  veikimą.*/
 echo '<br> 4 uzd extends: <br>';
 
 require __DIR__ . '/Kibiras3.php';
 require __DIR__ . '/KibirasNePo1.php';
 
 
-$k3= new Kibiras3;
-$k3e= new KibirasNePo1;
+$k3 = new Kibiras3;
+$k3e = new KibirasNePo1;
 
-echo "Prideti daug akmenu: " .$k3e->pridetiDaugAkmenu(5);
+echo "Prideti daug akmenu: " . $k3e->pridetiDaugAkmenu(5);
 echo '<br>';
 
 echo '<br>';
-echo "Kiek pririnkta akmenu KibirasNePo1 objekte: " .$k3e->kiekPririnktaAkmenu();
+echo "Kiek pririnkta akmenu KibirasNePo1 objekte: " . $k3e->kiekPririnktaAkmenu();
 echo '<br>';
 
 /* 6. Sukurti klasę Stikline. Sukurti privačią savybę turis ir kiekis. Parašyti metodą 
@@ -94,7 +94,7 @@ $st200 = new Stikline(200);
 echo "<br>";
 $st200->ipilti(200);
 $st150->ipilti($st200->ispilti());
-echo "i 100ml stikline ipyliau: " .$st100->ipilti($st150->ispilti()). "<br>"; 
+echo "i 100ml stikline ipyliau: " . $st100->ipilti($st150->ispilti()) . "<br>";
 
 
 /* 7. Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys turi konstantą DYDIS lygią
@@ -105,19 +105,20 @@ echo "i 100ml stikline ipyliau: " .$st100->ipilti($st150->ispilti()). "<br>";
  kol bus pririnktas pilnas krepšys nesukirmijusių ir valgomų grybų (gali būti biški 
  daugiau nei DYDIS). */
 
- echo '<br> 7 uzd grybaujam: <br>';
+echo '<br> 7 uzd grybaujam: <br>';
 
 require __DIR__ . '/Grybas.php';
 require __DIR__ . '/Krepsys.php';
 
-$g1 = new Grybas;
-$g2 = new Grybas;
 
+$krp = new Krepsys;
 echo '<pre>';
-print_r($g1);
-print_r($g2);
 
 
 
+while ($krp->dydis > $krp->pririnktuSvoris) {
 
-
+  $krp->deti(new Grybas);
+}
+echo "nu nu: ";
+print_r($krp->pririnktuSvoris);

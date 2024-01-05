@@ -1,7 +1,6 @@
 <?php
 
-class Kibiras2
-{
+class Kibiras2{
 
     static private $akmenuKiekisVisuoseKibiruose = 0;
     private $akmenuKiekis = 0;
