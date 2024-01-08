@@ -32,3 +32,4 @@ echo $kb3->kiekPririnktaAkmenu();
 echo "<br> Viso akmenu pririnkta, result is pirmo kibiro: " . $kb1->getAkmenuKiekisVisuoseKibiruose();
 echo "<br> antrame kibire: " . $kb2->getAkmenuKiekisVisuoseKibiruose();
 echo "<br> treciame kibire: " . $kb3->getAkmenuKiekisVisuoseKibiruose();
+echo Kibiras2::getAkmenuKiekisVisuoseKibiruose();

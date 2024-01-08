@@ -5,7 +5,6 @@ class Kibiras2{
     static private $akmenuKiekisVisuoseKibiruose = 0;
     private $akmenuKiekis = 0;
 
-
     /* kad kiekvienas sukuriamas objektas gautu geteri objekte konstrukte sukuriama savybe/kintamasis */
     public function __construct(){
         $this->akmenuKiekis = 0;
