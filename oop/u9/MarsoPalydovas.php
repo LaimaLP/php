@@ -1,11 +1,10 @@
-
 <?php
-
 
 class MarsoPalydovas
 {
 
     private static $sukurtiObjektai = [];
+    //static, nes sia savybe dalinasi visi objektai sukuriami is klases
     private static $kiekSukurtaPalydovu = 0;
     private  $name;
 
@@ -13,6 +12,7 @@ class MarsoPalydovas
     {
         $this->name = $initialName;
         self::$sukurtiObjektai[] = $this;
+        //$this tai konkreciai tas sukurtas objektas, o self::$sukurti... , naudojam self, nes statine savybe
     }
     public static function  sukurtiPalydova()
     {
