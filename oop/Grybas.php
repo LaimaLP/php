@@ -7,10 +7,11 @@ class Grybas
     private $svoris;
     public function __construct()
     {
-        $this->valgomas = rand(0, 1);
-        $this->sukirmijes = rand(0, 1);
+        $this->valgomas = (bool) rand(0, 1);
+        $this->sukirmijes = (bool) rand(0, 1);
         $this->svoris = rand(5, 45);
     }
+
     public function getValgomas()
     {
         return $this->valgomas;
