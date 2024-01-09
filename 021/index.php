@@ -9,4 +9,10 @@ $text = new RandomColor();
 
 echo $text->text2H1('Hello, Laima');
 
-//jei rasom tevus, reikia kad vaikas duotu, todel
+/* 
+1. is abstrakciu klasiu objektu daryti negalima;
+abstrakcijos aprasomos, kai zinom, kad jos turim butim implementuotos vaikuose;
+
+*/
+
+//jei rasom tevus, reikia kad vaikas duotu, todel rasom abstract;

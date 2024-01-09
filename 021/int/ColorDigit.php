@@ -1,6 +1,10 @@
 <?php
 
+/* - padaryti klase tiems dviems interfeisams 
++3
 
+
+*/
 class ColorDigit implements RandomColorInterface, RandomDigitInterface {
 
     public function randomColor() : string {
