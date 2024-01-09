@@ -17,4 +17,5 @@ $z2 = new Butkute();
 echo $z1->name . ' ' . $z1->surname . '<br>';
 echo $z2->name . ' ' . $z2->surname . '<br>';
 echo $z2->sister . '<br>';
+
 //namespaces krenta ant visu klases vardu, reikia juos islygiuoti, su use aba namespaceus surasyti

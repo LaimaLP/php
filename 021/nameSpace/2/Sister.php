@@ -1,9 +1,9 @@
 <?php
 
 // namespace Sister\Teressa;
-
+namespace But;
 
 
 class Sister {
-    public $sister = 'Laima';
+    public $sister = 'Brigita';
 }
