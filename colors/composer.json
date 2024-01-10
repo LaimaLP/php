@@ -1,0 +1,17 @@
+{
+    "name": "laima/colors",
+    "description": "Nice colors CRUD",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Laima\\Colors\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Colored Bebras",
+            "email": "bebras@colors.com"
+        }
+    ],
+    "require": {}
+}
