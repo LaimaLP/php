@@ -1,0 +1,15 @@
+{
+    "name": "laima/022",
+    "autoload": {
+        "psr-4": {
+            "Laima\\022\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LaimaLP",
+            "email": "pileliene.laima@gmail.com"
+        }
+    ],
+    "require": {}
+}
