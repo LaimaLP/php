@@ -13,6 +13,7 @@ class HomeController
         //i templeita perduodame data
         return App::view('home', [
             'homeNumber' => $number,
+            'title' => 'Home sweet home'
         ]);
     }
 
@@ -20,7 +21,7 @@ class HomeController
     {
         return App::view('home-color', [
             'homeColor' => $color,
-            // 'title' => 'Home sweet home'
+            'title' => 'Home sweet home'
         ]);
     }
 }

@@ -3,17 +3,19 @@
 namespace Colors\App;
 
 use Colors\App\Controllers\HomeController;
+use Colors\App\Controllers\ColorController;
 
 class App
 {
     public static function run()
     {
         $server = $_SERVER['REQUEST_URI'];
+        echo '<br>server <br>';
+        // print_r($server);
+
         // $server = str_replace('/colors/public/', '', $server); jei eiciau kitu keliu per public
-        $url = explode('/', $server);
-        array_shift($url);
-        // print_r($url); parodo areju su url duomenim
-       
+        $url = explode('/', $server); //splitina stringa per /, arr[0] niekas, arr[1 ir kiti] jau reiksmes po /
+        array_shift($url); //kadangi visada pirmasis yra tuscias, ji pasalinam, toliau dirbam su arr.
         return self::router($url);
     }
 
@@ -21,11 +23,18 @@ class App
     {
         $method = $_SERVER['REQUEST_METHOD'];
         
-        if ('GET' == $method && count($url) == 1 && $url[0] == '') {
+        if ($method == 'GET' && count($url) == 1 && $url[0] == '') {
+            
             return (new HomeController)->index();
         }
-        if ('GET' == $method && count($url) == 2 && $url[0] == 'home') {
-            return (new HomeController)->color($url[1]);
+        if ($method == 'GET' && count($url) == 3 && $url[0] != '') {
+            return (new HomeController)->color($url[2]);
+        }
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'colors' && $url[1] == 'create') {
+            return (new ColorController)->create();
+        }
+        if ('POST' == $method && count($url) == 2 && $url[0] == 'colors' && $url[1] == 'store') {
+            return (new ColorController)->store($_POST);
         }
 
 
@@ -40,7 +49,7 @@ class App
                          print_r($data);
        //f-jos viduje atsiranda kintamasis homenumber
         ob_start(); //output buffer, niekas neiseina su echo. ATlaisvinamas arba kai pasibaigia scriptas arba visa turini surinkti i kintamaji content ir ta buferi istrinam
-        require ROOT . 'views/top.php';
+        require ROOT . "views/top.php";
         require ROOT . "views/$view.php";
         require ROOT . 'views/bottom.php';
         $content = ob_get_clean();

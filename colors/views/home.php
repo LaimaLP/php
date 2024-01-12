@@ -1,4 +1,1 @@
-
-<!-- bus atsakigas uz html'us -->
-
-<h1>Home, sweet home, on street Elm <?= $homeNumber ?></h1>
+<?php require __DIR__ .'/nav.php' ?>
