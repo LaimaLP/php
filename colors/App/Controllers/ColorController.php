@@ -6,7 +6,7 @@ use App\DB\FileBase;
 
 class ColorController {
 
-    public function index($reques) {
+    public function index($request) {
 
         $writer = new FileBase('colors'); //1. sukuriame irasinetojo faila - objekta, pasileidzia konstruktorius is FileBase klases >> sugeneruojami du failai json ir -index.json
         //po tai kai susikuria objekta, writeris jau turi nusiskaites indeksa ir data(is constructorio).
@@ -15,6 +15,7 @@ class ColorController {
 
 
         $sort = $request['sort'] ?? null;
+
         if ($sort == 'size-asc') {
             usort($colors, fn($a, $b) => $a->size <=> $b->size);
             $sortValue = 'size-desc'; 
@@ -29,12 +30,11 @@ class ColorController {
 
 
 
-
-
         //tuomet paleidziamas templatas ->colors/index . tam failui perduodami du kintamieji:title ir colors. colors foreachina datai renderinti
         return App::view('colors/index', [
             'title' => 'All colors',
-            'colors' => $colors
+            'colors' => $colors,
+            'sortValue' => $sortValue
         ]);
     }
     
@@ -114,7 +114,7 @@ class ColorController {
         ]);
     }
 
-    public function update($id, $request) {
+    public function update($id, $request) { 
 
         $color = $request['color'] ?? null;
         $size = $request['size'] ?? null;

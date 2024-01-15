@@ -10,6 +10,7 @@ class App
     {
         $server = $_SERVER['REQUEST_URI'];
         // $server = str_replace('/colors/public/', '', $server);
+        $server = preg_replace('/\?.*$/', '', $server); //istrinam viska kas yra po klaustumo iki pabaigos
         $url = explode('/', $server);
         array_shift($url);
         return self::router($url);
@@ -41,8 +42,12 @@ class App
         if ('POST' == $method && count($url) == 2 && $url[0] == 'colors' && $url[1] == 'store') {
             return (new ColorController)->store($_POST);
         }
+
+
+
         if ('POST' == $method && count($url) == 3 && $url[0] == 'colors' && $url[1] == 'destroy') {
-            return (new ColorController)->destroy($url[2]);
+            return (new ColorController)->destroy($url[2]); 
+            // o ta treciaji pasiimam i destroy
         }
 
         if ('GET' == $method && count($url) == 3 && $url[0] == 'colors' && $url[1] == 'edit') {

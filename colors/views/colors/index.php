@@ -49,7 +49,8 @@
                                     <div class="col-1"></div>
                                     <div class="col-4">
                                         <a href="<?= URL ?>/colors/edit/<?= $color->id ?>" class="btn btn-warning mb-1">Edit</a>
-                                        <form action="<?= URL ?>/colors/destroy/<?= $color->id ?>" method="post">
+                                        <!-- trynimui reikia mygtuko, nes info turi buti siunciama post motodu per forma, irasom ka norim trinti. ID -->
+                                        <form action="<?= URL ?>/colors/destroy/<?= $color->id ?>" method="post"> 
                                             <button class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
