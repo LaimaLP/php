@@ -3,7 +3,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-7">
-            <form action="<?= URL ?>/colors/store" method="post">
+            <!-- kai i forma rasomi duomenys, siunciami i store, toliau einam i App.php -->
+            <form action="<?= URL ?>/colors/store" method="post"> 
                 <div class="card mt-5">
                     <div class="card-header">
                         <h1>Create new color</h1>
