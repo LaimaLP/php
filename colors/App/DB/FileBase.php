@@ -42,11 +42,11 @@ class FileBase implements DataBase
 
     public function update(int $id, object $data) : bool
     {
-        foreach ($this->data as $key => $value) {
-            if ($value->id == $id) {
-                $data->id = $id;
+        foreach ($this->data as $key => $value) { //einam per visus duomenis
+            if ($value->id == $id) { //susirandu ta kuri reikai upd
+                $data->id = $id; //(itvirtinimui, kad tas id kurio ieskojom)
                 $this->data[$key] = $data;
-                return true;
+                return true; //grazina pasiseke ar ne upd
             }
         }
         return false;
@@ -56,15 +56,15 @@ class FileBase implements DataBase
     {
         foreach ($this->data as $key => $value) {
             if ($value->id == $id) {
-                unset($this->data[$key]);
-                $this->data = array_values($this->data);
+                unset($this->data[$key]);//po istrynimo atsiranda skyle, po json iraso kaip masyva, su skyle negali buti, todel pries tai dar array_values padarom
+                $this->data = array_values($this->data); //sugrazina i teisingas eiles.
                 return true;
             }
         }
         return false;
     }
 
-    public function show(int $id) : object
+    public function show(int $id) : object 
     {
         $this->save = false; //jei tik show, savint nreikia, pazymim kad false
         foreach ($this->data as $key => $value) {

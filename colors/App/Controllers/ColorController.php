@@ -33,7 +33,7 @@ class ColorController {
         $color = $request['color'] ?? null;
         $size = $request['size'] ?? null;
 //vel sukuriamas failo writeris ... ir istorija kartojasi, sukuria konstruktoriu
-        $writer = new FileBase('colors');
+        $writer = new FileBase('colors'); //sukuriamas naujas obj
         //leidziamas metodas create (is FileBase)
         $writer->create((object) [
             'color' => $color,
