@@ -60,16 +60,17 @@ class ColorController
         $colorTrim = ltrim($color, '#');
 
         // curl to color API here 
-        $curl = curl_init(); //f-ja sukuria objekta(vidini). konfiguruojam toliau ji
-        var_dump($curl);
+        $curl = curl_init(); //curlas - instaliuota biblioteka-sukuria objekta(vidini). konfiguruojam toliau ji
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://www.thecolorapi.com/id?hex=$colorTrim", //kur reikes eiti
             CURLOPT_RETURNTRANSFER => true, // ar laukti atsakymo
             CURLOPT_TIMEOUT => 30, //kiek s laukti atsakymo, timeout
         ]);
-        // $response = curl_exec($curl); //svarbiausia eilute. kreipimasis, is serverio ateina ats i kintamaji response. Gali trukti iki 30s
 
-        $response = curl_exec($curl) ;
+        // $response = curl_exec($curl); //svarbiausia eilute. curl_exec yra kreipimasis, is serverio ateina ats i kintamaji response, ten isidedam. Gali trukti iki 30s
+
+        $response = curl_exec($curl);
+      
         //erroro handlinimas
         if ( $response === false) {
             echo 'Curl error: ' . curl_error($curl);
@@ -78,9 +79,10 @@ class ColorController
             $response = json_decode($response); //response lieka atsakymas, dekoduojamae i objektus ir is ten issimame color name
             $colorName = $response->name->value;
         }
+      
 
 
-        curl_close($curl); //uzdarymas
+        curl_close($curl); //kai sulaukiam atsakymo, uzdarymom
 
 
         //vel sukuriamas failo writeris ... ir istorija kartojasi, sukuria konstruktoriu

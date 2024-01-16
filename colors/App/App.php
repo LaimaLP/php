@@ -81,7 +81,7 @@ class App
     {
         extract($data);
 
-        $msg = Message::get()->show();
+        $msg = Message::get()->show(); // cia gausim arba false arba masyva su zinute ir spalva statuso
         $auth = Auth::get()->getStatus();
 
 
