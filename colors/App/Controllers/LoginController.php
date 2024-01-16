@@ -10,7 +10,9 @@ use Colors\App\Message;
 class LoginController{
 
 public function index(){
-    return App::view('auth/login');
+    return App::view('auth/login', [
+        'title' => 'Login'
+    ]);
 }
 
 public function login($request){
