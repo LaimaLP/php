@@ -19,7 +19,7 @@ class LoginController
         ]);
     }
 
-    public function login($request)
+    public function login($request) //tipiskas kontrolerio darbas. Serverio uzklausia, gauna info ir suformuoja ats
     {
         $email = $request['email'] ?? '';
         $password = $request['password'] ?? '';
@@ -30,6 +30,8 @@ class LoginController
         }
 
         Message::get()->set('danger', 'Wrong email or password');
+
+
         return App::redirect('login');
     }
 

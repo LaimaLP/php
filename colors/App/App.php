@@ -39,7 +39,7 @@ class App
             return (new LoginController)->logout();
         }
 
-
+//midelware pvz, isiterpia i viduri
         if ($url[0] === 'colors' && !Auth::get()->getStatus()) {
             return self::redirect('login');
         }

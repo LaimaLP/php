@@ -4,18 +4,19 @@ namespace Colors\App;
 
 use App\DB\FileBase;
 
+//visas sitas pasileidzia pacioj pradzioj kaip ir message index.php(public)
 class Auth
 {
-    private static $auth;
+    private static $auth; //cia laikom pati obj
     private $login = false;
     private $user;
 
-    public static function get()
+    public static function get() //sukuriamas singeltonas
     {
         return self::$auth ?? self::$auth = new self;
     }
 
-    private function __construct()
+    private function __construct() //konstrukcijos metu issiaiskinam prisilogines ar ne
     {
         if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             $this->login = true;
@@ -33,9 +34,9 @@ class Auth
 
     public function tryLoginUser($email, $password)
     {
-        $writer = new FileBase('users');
+        $writer = new FileBase('users'); //kreipiasi i userius
         $users = $writer->showAll();
-        foreach ($users as $user) {
+        foreach ($users as $user) {//daro tikrinima
             if ($user->email == $email && $user->password == sha1($password)) {
                 $_SESSION['login'] = 1;
                 $_SESSION['user'] = $user->name;
