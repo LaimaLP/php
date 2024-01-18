@@ -20,25 +20,52 @@ $pdo = new PDO($dsn, $user, $pass, $options); //sukuriam nauja obj naudojant suv
 // SELECT column1, column2, ...
 // FROM table_name;
 
+
 $sql = "
     SELECT id, name, height, type
     FROM trees
-    -- WHERE type height > 10
-     ORDER BY height DESC
-    -- LIMIT 2,3
+    -- WHERE height > height / 2
+    -- ORDER BY height DESC
+    -- LIMIT 0, 3
+    -- WHERE id = 3
 ";
-    //SELECT * kad visi stulpeliai, nebereikia issivardinti
-    //limit nuo iki
-    // ORDER BY name ASC
-    //filteryje vienguba ligybe, prikyrime
 
 
 $stmt = $pdo->query($sql); //gaunam statmenta(tam tikras db atsakymo formatas, kuri reikia issilukstenti)
 
 $trees = $stmt->fetchAll(); //gausim masyva, nes visruj pakonfiginom 12eilute
 
-// echo '<pre>';
-// print_r($trees);
+
+    //SELECT * kad visi stulpeliai, nebereikia issivardinti
+    //limit nuo iki
+    // ORDER BY name ASC
+    //filteryje vienguba ligybe, prikyrime
+
+// SELECT AVG(column_name)
+// FROM table_name
+// WHERE condition;
+
+$sql = "
+    SELECT AVG(height) AS average, COUNT(*) AS count
+    FROM trees
+    ";
+
+$stmt = $pdo->query($sql);
+
+
+$stat = $stmt->fetch();
+
+
+$stmt = $pdo->query($sql); 
+$stmt = $pdo->query($sql); 
+
+$average = $stmt->fetch(); 
+
+print_r($average)
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +75,10 @@ $trees = $stmt->fetchAll(); //gausim masyva, nes visruj pakonfiginom 12eilute
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maria Crud Trees</title>
 <style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+        margin:1em 5em;
+    }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -67,6 +98,34 @@ $trees = $stmt->fetchAll(); //gausim masyva, nes visruj pakonfiginom 12eilute
             background-color: #4CAF50;
             color: white;
         }
+.forms {
+            margin-top: 20px;
+            display: flex;
+        }
+        .forms form {
+            width: 33%;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            box-shadow: 0 0 5px #ccc;
+            box-sizing: border-box;
+        }
+        .forms form input, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .forms form button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -95,7 +154,41 @@ $trees = $stmt->fetchAll(); //gausim masyva, nes visruj pakonfiginom 12eilute
             <?php endforeach; ?>
         </tbody>
     </table>
-   
+
+
+    <div class="forms">
+        <form action="http://localhost/backEnd/php/db/store.php" method="post">
+            <h2>Plant a tree</h2>
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="height" placeholder="Height">
+            <select name="type">
+                <option value="0">Pasirinkti<option>
+                <option value="lapuotis">Lapuotis<option>
+                <option value="spygliuotis">Spygliuotis<option>
+                <option value="palme">Palme<option>
+            </select>
+
+            <button type="submit">Plant Tree</button>
+        </form>
+        <form action="http://localhost/backEnd/php/db/destroy.php" method="post">
+<h2>Cut a tree</h2>
+<input type="text" name="id" placeholder="id">
+
+<button>Delete</button>
+
+        </form>
+        <form action="http://localhost/backEnd/php/db/update.php" method="post">
+    <h2>Grow a tree</h2>
+    <input type="text" name="id" placeholder="id">
+    <input type="text" name="height" placeholder="Height">
+
+
+    <button type="submit">Grow</button>
+</form>
+
+    </div>
+
+
 </body>
 </html>
 
