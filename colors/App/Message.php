@@ -1,32 +1,43 @@
-<?php 
+<?php
+
 namespace Colors\App;
 
 //veiks kaip servisas, atsakingas uz zinuciu generavima.
-class Message{
+class Message
+{
     private static $message;
-    private $show;
-    public static function get(){ //duoda objekta. singeltona, t.y viena 
+    private $show, $error = false;
+    public static function get()
+    { //duoda objekta. singeltona, t.y viena 
         return self::$message ?? self::$message = new self; //jeigu nera, sukkurk.
     }
 
-    private function __construct(){ //konstruoja zinutes
-        if(isset($_SESSION['message'])){
+    private function __construct()
+    { //konstruoja zinutes
+        if (isset($_SESSION['message'])) {
             $this->show = $_SESSION['message']; //is message paima message ir ji uzsetina
             unset($_SESSION['message']);
         }
     }
-    public function show(){ 
+    public function show()
+    {
         return $this->show ?? false;
     }
 
-    public function set($type = 'succes', $message ){ //iraso i sesija message
+    public function set($type = 'succes', $message)
+    { //iraso i sesija message
+
+        $this->error = true;
+
+
         $_SESSION['message'] = [
-            'text'=> $message,
-            'type'=>$type
+            'text' => $message,
+            'type' => $type
         ];
     }
 
-    public function hasErrors() {
-        return isset($this->show['type']) && $this->show['type'] === 'error';
+    public function hasErrors()
+    {
+        return $this->error;
     }
 }

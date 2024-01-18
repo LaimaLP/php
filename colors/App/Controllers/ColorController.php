@@ -6,7 +6,7 @@ use Colors\App\App;
 use App\DB\FileBase;
 use Colors\App\Message;
 use App\DB\MariaBase;
-USE     Colors\App\
+use Colors\App\Requests\ColorStoreRequest;
 
 class ColorController
 {
@@ -55,6 +55,15 @@ class ColorController
 
     public function store($request)
     {
+
+
+      if(!ColorStoreRequest::validate($request)){
+        return App::redirect('colors/create');
+      }
+
+
+
+
         //cia atkeliauja is POST masyvo
         //i $color idedam kas ateina is color ...
         $color = $request['color'] ?? null;
