@@ -26,4 +26,7 @@ class Message{
         ];
     }
 
+    public function hasErrors() {
+        return isset($this->show['type']) && $this->show['type'] === 'error';
+    }
 }

@@ -5,9 +5,14 @@ use Colors\App\Message;
 use Colors\App\Auth;
 session_start(); //paleidizam sesijos starta, del messagu
 
+
+define('DB', 'file');
+
+
 require '../vendor/autoload.php';
 
 //konstantos
+
 define('ROOT', __DIR__ . '/../'); //rodo kur musu visi faila sudeti
 define('URL', 'http://super-colors.test'); //rodo, koks adresiukas
 //sitas praeina labai anksti, vos praeinam pro duris;
