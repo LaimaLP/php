@@ -1,8 +1,11 @@
 {
     "name": "laima/022",
     "autoload": {
+        
         "psr-4": {
-            "Laima\\022\\": "src/"
+            "": "",
+            "Visai\\Kitas\\Dalykas\\": "d2/"
+
         }
     },
     "authors": [

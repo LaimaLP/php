@@ -13,7 +13,9 @@ class App
     {
         $server = $_SERVER['REQUEST_URI'];
         // $server = str_replace('/colors/public/', '', $server);
+
         $server = preg_replace('/\?.*$/', '', $server); //istrinam viska kas yra po klaustumo iki pabaigos
+
         $url = explode('/', $server);
         array_shift($url);
         return self::router($url);
@@ -79,18 +81,24 @@ class App
 
     public static function view($view, $data = [])
     {
-        extract($data);
+        extract($data); //(pvz jei i templeita perduodam kintamaji.) 
+        //extractinam indexus, is tu indexus padaro tokio pat vardo kintamuosius
+        //ir tiems kintamiesiems priskiria to kintamojo reiksme, taip sios f-jos viduje gaunam pvz $number kinatamaji
+
 
         $msg = Message::get()->show(); // cia gausim arba false arba masyva su zinute ir spalva statuso
         $auth = Auth::get()->getStatus();
 
+    //output buffer start. Neleidzia echointi sitas. Leidzia arba kai pasibaigia scriptas arba surinkus buferi i "stikline -> $content" ir ta buferi istrinam
+    //viskas kas buvo isechointa surenkam i $content
+        ob_start(); 
 
-        ob_start();
         require ROOT . 'views/top.php';
         require ROOT . "views/$view.php";
         require ROOT . 'views/bottom.php';
         $content = ob_get_clean();
-        return $content;
+        return $content; 
+        //
     }
 
     public static function redirect($url)

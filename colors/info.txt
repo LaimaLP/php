@@ -1,0 +1,20 @@
+** data:2024-11-10 
+    * 022 paskaikta:
+- projekto pradzioje terminale: composer init
+- public folderyje dalykai pasiekiami is narsykles, visi kiti ne, uzdaryti.
+- htaccess nukreipia, kad ir kur eitum, petenki i public/index.php;
+- pagrindiniame index.php require vendor/autoload.php;
+- views'suose html'ai, visi templetai, kuriuos rodom - page'ai.
+
+** data: 2024-11-11
+    * 023 paskaita:
+- CSS pridejimas, webpack (wraperis) old school'inis(irankis frontui sudeti); (Vite bus Laravelyje) 
+- (npm init -y: package.json); npm install laravel-mix --save-dev: 
+- susikuriam nauja faila webpack.mix.js --> jame ...
+- resources folderis su css ir js, webpackas 
+- npx mix watch  transpiliuoja automatiskai, atnaujina css is resources i public, kas ir eina i narsykle. json galim scripta isirasyti
+(watchas automatiskai is resources perkelia i public, o time() kad kiekviena karta narsykle pasiimtu naujausius duomenis);
+
+- (terminale) npm i bootstrap.  resources reikia parequirinti bootstrap.
+
+- !!! npm mix production cia jau paciam gale pasidaryti

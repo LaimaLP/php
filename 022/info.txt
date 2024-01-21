@@ -1,0 +1,6 @@
+apie PSR-4.
+spl-autoloaderis sugeneruotas automatiskai: 
+-terminale paleidziam composer init, sugenruojamas vendor ir composer.json. 
+-Ka nors keiciam json faile, terminale paleidziam composer dumpautoloader.
+-composer.json autoload'e: kairej "prefixas": "tikrasisKelias";
+-kaip yra "":"", tai namespace atitinka tikraji kelia.
