@@ -1,0 +1,24 @@
+**  28 PASKAITA
+*   2024-01-18
+
+-   create, delete, update DB
+-   SQL insert to (store - veiksmo failas):
+        * sintakse:  INSERT INTO table_name (column1, column2, column3, ...)
+                     VALUES (value1, value2, value3, ...);
+- DELETE:
+        * sintakse: DELETE FROM table_name WHERE condition;
+        saugiai uzklausai rasome ne kintamuosius, o ?.
+
+
+- EDIT/update
+        * sintakse: 
+                    $sql = "
+                                UPDATE trees
+                                SET height = :h
+                                WHERE id = :id
+                                ";
+
+- Agregacija
+
+- Distinct
+

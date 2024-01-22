@@ -23,7 +23,7 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 $id = $_POST['id'];
 $height = $_POST['height'];
 
-
+/* */
 
 $sql = "
 UPDATE trees
@@ -33,7 +33,7 @@ UPDATE trees
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->execute([
+$stmt->execute([ //nesvarbus eiliskumas, asociatyvus
     'id'=> $id,
     'h'=> $height,
 ]);

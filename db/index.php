@@ -41,19 +41,21 @@ $sql = "
 ";
 
 //querinam sql -> gaunam statmenta(tam tikras db atsakymo formatas, kuri reikia issilukstenti)
-$stmt = $pdo->query($sql); 
+$stmt = $pdo->query($sql);
 $trees = $stmt->fetchAll(); //gausim asociatyvu masyva, nes visruj pakonfiginom 12eilute. 
 
 
-    //SELECT * kad visi stulpeliai, nebereikia issivardinti
-    //limit nuo iki
-    // ORDER BY name ASC
-    //filteryje vienguba ligybe, priskyrime
+//SELECT * kad visi stulpeliai, nebereikia issivardinti
+//limit nuo iki
+// ORDER BY name ASC
+//filteryje vienguba ligybe, priskyrime
 
 // SELECT AVG(column_name)
 // FROM table_name
 // WHERE condition;
 
+
+//AGREGACIJA:
 $sql = "
     SELECT AVG(height) AS average, COUNT(*) AS count
     FROM trees
@@ -62,13 +64,13 @@ $sql = "
 $stmt = $pdo->query($sql);
 
 
-$stat = $stmt->fetch();
+$stat = $stmt->fetch(); //pasiimam i statistika
 
 
-$stmt = $pdo->query($sql); 
-$stmt = $pdo->query($sql); 
+$stmt = $pdo->query($sql);
+$stmt = $pdo->query($sql);
 
-$average = $stmt->fetch(); 
+$average = $stmt->fetch();
 
 print_r($average)
 
@@ -79,38 +81,43 @@ print_r($average)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maria Crud Trees</title>
-<style>
-    body{
-        font-family:Arial, Helvetica, sans-serif;
-        margin:1em 5em;
-    }
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 1em 5em;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-       
-        th, td {
+
+        th,
+        td {
             padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-       
+
         tr:hover {
             background-color: #f5f5f5;
         }
-       
+
         th {
             background-color: #4CAF50;
             color: white;
         }
-.forms {
+
+        .forms {
             margin-top: 20px;
             display: flex;
         }
+
         .forms form {
             width: 33%;
             margin-right: 20px;
@@ -121,12 +128,15 @@ print_r($average)
             box-shadow: 0 0 5px #ccc;
             box-sizing: border-box;
         }
-        .forms form input, select {
+
+        .forms form input,
+        select {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
+
         .forms form button {
             padding: 10px;
             border: 1px solid #ccc;
@@ -134,7 +144,6 @@ print_r($average)
             font-size: 16px;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -143,6 +152,8 @@ print_r($average)
 
 <body>
     <h1>Trees</h1>
+    <h2>Average height: <?= $stat['average'] ?> m</h2>
+    <h2>Total trees: <?= $stat['count'] ?></h2>
     <table>
         <thead>
             <tr>
@@ -171,34 +182,37 @@ print_r($average)
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="height" placeholder="Height">
             <select name="type">
-                <option value="0">Pasirinkti<option>
-                <option value="lapuotis">Lapuotis<option>
-                <option value="spygliuotis">Spygliuotis<option>
-                <option value="palme">Palme<option>
+                <option value="0">Pasirinkti
+                <option>
+                <option value="lapuotis">Lapuotis
+                <option>
+                <option value="spygliuotis">Spygliuotis
+                <option>
+                <option value="palme">Palme
+                <option>
             </select>
 
             <button type="submit">Plant Tree</button>
         </form>
+
         <form action="http://localhost/backEnd/php/db/destroy.php" method="post">
-<h2>Cut a tree</h2>
-<input type="text" name="id" placeholder="id">
-
-<button>Delete</button>
-
+            <h2>Cut a tree</h2>
+            <input type="text" name="id" placeholder="id">
+            <button>Delete</button>
         </form>
+
         <form action="http://localhost/backEnd/php/db/update.php" method="post">
-    <h2>Grow a tree</h2>
-    <input type="text" name="id" placeholder="id">
-    <input type="text" name="height" placeholder="Height">
-
-
-    <button type="submit">Grow</button>
-</form>
+            <h2>Grow a tree</h2>
+            <input type="text" name="id" placeholder="id">
+            <input type="text" name="height" placeholder="Height">
+            <button type="submit">Grow</button>
+        </form>
 
     </div>
 
 
 </body>
+
 </html>
 
 <!-- db atiduoda duomenis taip kaip jai patogiau, jei nenurodome kaip norime rusiuoti, ir duoda kaip nori -->
