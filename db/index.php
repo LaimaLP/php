@@ -1,45 +1,54 @@
 <?php
 
 $host = '127.0.0.1'; //'localhost'
-$db   = 'forest'; //duomenu bases pavadinimas 
+$db   = 'forest'; //duomenu bazes pavadinimas 
 $user = 'root'; //useris php myAdmin 
 $pass = ''; //slapiko nera
-$charset = 'utf8mb4';
+$charset = 'utf8mb4'; //nesvarbu
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset"; //linkas i kuri sumeta visus kintamuosius
 $options = [ //standartine konfiguracija
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //masyvo indeksas masyvo reiksme
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
+
+//super darmui sql naudoti, kitais atvejais PDO.
+
 $pdo = new PDO($dsn, $user, $pass, $options); //sukuriam nauja obj naudojant suvestus dalykus
 //Tarpininkas su kuriuo snekesim su DB
-// pdo???? funkcionaluma susiristi su duomenu baze ...tam reikia db vardo slaptazodzio ir vartotojo. fsio, pdo ready to go. 
+// pdo vidinis objektas duodantis funkcionaluma susiristi su duomenu baze, susirisimui reikia duomenu 
+//bazes vardo slaptazodzio ir vartotojo. fsio, pdo ready to go. Tarpininkas per kuri galesim sneketis su duomenu baze.
 
 
-// SELECT column1, column2, ...
-// FROM table_name;
+/* *nuskaitymas is duomenu bazes: *
+READ'o sintakse:
+- rasymas dvigubose kabutese(sql'ine uzklausa);
+ SELECT column1, column2, ...
+ FROM table_name; */
 
-
+//nusisedejimas kintamojo vardas $sql, nekeisti. Pripazita didziamas ir mazasias.
 $sql = "
     SELECT id, name, height, type
     FROM trees
-    -- WHERE height > height / 2
-    -- ORDER BY height DESC
-    -- LIMIT 0, 3
-    -- WHERE id = 3
+    -- WHERE height > height / 2 (filtras, WHERE type = 'lapuotis' ir etc, pvz !='lapuotis => sitaip rasyti kietai (ne): <>)
+    -- WHERE type <> 'lapuotis' AND height > 10
+    -- WHERE type = 'lapuotis' AND type = 'palme' =>nieko nerodys, nes nera ir to ir to
+    -- WHERE height > height/2 (galima konstruoti ir matematiskai)
+    -- ORDER BY type ASC, height DESC(uzsiprasom pagal abecele, kad atiduotu duomenis ir net kelis sortus galima vardinti)
+    -- LIMIT 0, 3 (kiek norim rezultatu, grazina 3) Pirmas sk parodo nuo kurio skaiciaus, o antras kiek. (kiek praleist, kiek testi)
+    -- WHERE id = 3 (tikslingai paima pagal nurodyta ID)
 ";
 
-
-$stmt = $pdo->query($sql); //gaunam statmenta(tam tikras db atsakymo formatas, kuri reikia issilukstenti)
-
-$trees = $stmt->fetchAll(); //gausim masyva, nes visruj pakonfiginom 12eilute
+//querinam sql -> gaunam statmenta(tam tikras db atsakymo formatas, kuri reikia issilukstenti)
+$stmt = $pdo->query($sql); 
+$trees = $stmt->fetchAll(); //gausim asociatyvu masyva, nes visruj pakonfiginom 12eilute. 
 
 
     //SELECT * kad visi stulpeliai, nebereikia issivardinti
     //limit nuo iki
     // ORDER BY name ASC
-    //filteryje vienguba ligybe, prikyrime
+    //filteryje vienguba ligybe, priskyrime
 
 // SELECT AVG(column_name)
 // FROM table_name

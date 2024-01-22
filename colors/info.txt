@@ -18,3 +18,15 @@
 - (terminale) npm i bootstrap.  resources reikia parequirinti bootstrap.
 
 - !!! npm mix production cia jau paciam gale pasidaryti
+
+** data: 2024-11-15
+    *25 paskaita nuo 56 -1.11 min reziume CRUD
+    create, store, destroy, edit
+    - apie sorta 1:50
+
+
+** data: 2024-11-16
+    * 26 paskaita
+    - API, servisas-servisas bendravimas;
+    - messages
+

@@ -79,7 +79,6 @@ class ColorController
         ]);
 
         // $response = curl_exec($curl); //svarbiausia eilute. curl_exec yra kreipimasis, is serverio ateina ats i kintamaji response, ten isidedam. Gali trukti iki 30s
-
         $response = curl_exec($curl);
       
         //erroro handlinimas
