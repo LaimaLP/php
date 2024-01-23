@@ -62,7 +62,21 @@ if ('left' == $type) {
     
 }
 
+if ('right' == $type) {
 
+    // SELECT column_name(s)
+    // FROM table1
+    // LEFT JOIN table2
+    // ON table1.column_name = table2.column_name;
+    
+    $sql = "
+        SELECT c.id, p.id AS pid, name, number, client_id
+        FROM clients AS c
+        RIGHT JOIN phones3 AS p
+        ON c.id = p.client_id
+    ";
+    
+}
 
 
 $stmt = $pdo->query($sql);
@@ -166,7 +180,11 @@ $tableData = $stmt->fetchAll();
                 <input type="hidden" name="type" value="left">
                 <button type="submit">LEFT</button>
             </form>
-        
+            <form>
+                <h2>LEFT JOIN</h2>
+                <input type="hidden" name="type" value="right">
+                <button type="submit">RIGHT</button>
+            </form>
     </div>
 </body>
 </html>   
