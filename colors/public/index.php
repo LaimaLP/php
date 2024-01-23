@@ -6,7 +6,7 @@ use Colors\App\Auth;
 session_start(); //paleidizam sesijos starta, del messagu
 require '../vendor/autoload.php';
 //konstantos
-define('DB', 'file');
+define('DB', 'maria'); //imam info is file
 define('ROOT', __DIR__ . '/../'); //rodo kur musu visi faila sudeti
 define('URL', 'http://super-colors.test'); //rodo, koks adresiukas
 

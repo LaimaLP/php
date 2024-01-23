@@ -1,90 +1,94 @@
 <?php
 
 namespace App\DB;
-
 use App\DB\DataBase;
 use PDO;
 
 class MariaBase implements DataBase
 {
-    private $data, $pdo, $table, $stmt;
+    private $pdo, $table;
 
     public function __construct($table)
     {
-        $host = '127.0.0.1'; //'localhost'
-        $db   = 'forest'; //duomenu bases pavadinimas 
-        $user = 'root'; //useris php myAdmin 
-        $pass = ''; //slapiko nera
+        $host = 'localhost';
+        $db   = 'forest';
+        $user = 'root';
+        $pass = '';
         $charset = 'utf8mb4';
 
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-        $options = [ //standartine konfiguracija
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //masyvo indeksas masyvo reiksme
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, //pasireguliuojam ikad grazintu obj, o ne asoc masyva
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
         $this->pdo = new PDO($dsn, $user, $pass, $options);
         $this->table = $table;
     }
 
+   
 
-    public function create(object $data): int //situos data gaunam is creato
+
+    public function create(object $data) : int
     {
         $sql = "
-        INSERT INTO {$this->table} (name, color, size)
-        VALUES (?, ?, ?);
+            INSERT INTO {$this->table} (name, color, size)
+            VALUES (?, ?, ?)
         ";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$data->name, $data->color, $data->size]);
-        return $this->pdo->lastInsertId();
+        return $this->pdo->lastInsertId(); //grazina svieziausia ID
     }
 
-
-
-    public function update(int $id, object $data): bool
+    public function update(int $id, object $data) : bool
     {
         $sql = "
-        UPDATE {$this->table}
-        SET name = ?, color = ?, size = ?
-        WHERE id = ?
-    ";
+            UPDATE {$this->table}
+            SET name = ?, color = ?, size = ?
+            WHERE id = ?
+        ";
+
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$data->name, $data->color, $data->size]);
+
+        return $stmt->execute([$data->name, $data->color, $data->size, $id]);
     }
 
-    public function delete(int $id): bool
+    public function delete(int $id) : bool //gaunam ID kuri reikia istrinti, 
     {
         $sql = "
-        UPDATE {$this->table}
-        WHERE id = ?
-    ";
+            DELETE FROM {$this->table}
+            WHERE id = ?
+        ";
+
         $stmt = $this->pdo->prepare($sql);
+
         return $stmt->execute([$id]);
     }
 
-    public function show(int $id): object
+    public function show(int $id) : object
     {
         $sql = "
-        SELECT *
-        FROM {$this->table}
-    ";
+            SELECT *
+            FROM {$this->table}
+            WHERE id = ?
+        ";
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute();
+        $stmt->execute([$id]);
 
-        return $stmt->fetchAll();
+        return $stmt->fetch();
     }
-
-    public function showAll(): array
+    
+    public function showAll() : array
     {
         $sql = "
-    SELECT *
-    FROM {$this->table}
-";
+            SELECT *
+            FROM {$this->table}
+        ";
 
-      $stmt =   $this->pdo->query($sql);
+        $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll();
     }

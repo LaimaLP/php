@@ -14,8 +14,18 @@ class ColorController
     public function index($request)
     {
 
-        $writer = new FileBase('colors'); //1. sukuriame irasinetojo faila - objekta, pasileidzia konstruktorius is FileBase klases >> sugeneruojami du failai json ir -index.json
+        // $writer = new FileBase('colors'); //1. sukuriame irasinetojo faila - objekta, pasileidzia konstruktorius is FileBase klases >> sugeneruojami du failai json ir -index.json
         //po tai kai susikuria objekta, writeris jau turi nusiskaites indeksa ir data(is constructorio).
+       
+       
+        $writer = match(DB) {
+            'file' => new FileBase('colors'),
+            'maria' => new MariaBase('colors'),
+        };
+      
+      
+      
+      
         $colors = $writer->showAll(); //tuomet tame sukurtame obj paleidziam showAll metoda ir perduodamas result i $colors (metodas aprasytas FileBase)
 
 
@@ -96,7 +106,15 @@ class ColorController
 
 
         //vel sukuriamas failo writeris ... ir istorija kartojasi, sukuria konstruktoriu
-        $writer = new FileBase('colors'); //sukuriamas naujas obj
+        // $writer = new FileBase('colors'); //sukuriamas naujas obj
+
+        $writer = match(DB) {
+            'file' => new FileBase('colors'),
+            'maria' => new MariaBase('colors'),
+        };
+
+
+
         //leidziamas metodas create (is FileBase)
         $writer->create((object) [
             'color' => $color,
@@ -116,7 +134,14 @@ class ColorController
     public function destroy($id)
     {
 
-        $writer = new FileBase('colors');
+        // $writer = new FileBase('colors');
+
+        $writer = match(DB) {
+            'file' => new FileBase('colors'),
+            'maria' => new MariaBase('colors'),
+        };
+
+
         $writer->delete($id);
 
 
@@ -130,7 +155,15 @@ class ColorController
     public function edit($id)
     {
 
-        $writer = new FileBase('colors');
+        // $writer = new FileBase('colors');
+
+
+        $writer = match(DB) {
+            'file' => new FileBase('colors'),
+            'maria' => new MariaBase('colors'),
+        };
+
+
         $color = $writer->show($id);
 
         return App::view('colors/edit', [
@@ -173,7 +206,15 @@ class ColorController
         curl_close($curl); //uzdarymas
 
 
-        $writer = new FileBase('colors');
+        // $writer = new FileBase('colors');
+
+
+        $writer = match(DB) {
+            'file' => new FileBase('colors'),
+            'maria' => new MariaBase('colors'),
+        };
+
+        
         $writer->update($id, (object) [
             'color' => $color,
             'size' => $size,
