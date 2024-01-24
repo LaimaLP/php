@@ -1,0 +1,15 @@
+folderio sukurimui terminale: laravel new PAVADINIMAS; (composer global require laravel/installer);
+- routas atiduoti komanda i kontroleri;
+- kontrolerio kurimas laraveliskai: php artisan make:controller PavadinimasController;
+- jei norim gauti info is url, nenaudojam $_GET, controleryje i metoda pasiprasom Request prie argumentu. Request $request;
+- jei duomenys ateina is POST pasiimam taip pat is Request'o.
+
+- HTML i controller nerasom, keliam viska i view, resources->views-> pavadinimas.blade.php
+
+
+- Vite. STILIAUS LINKAS IDEDAMA i layout.blade.php:   @vite(['resources/css/app.scss']) . Jis is resursu CSS paima css.
+- jei klaida not found mainfest:
+        - 1. Reikia npm i
+        - 2. paleidziam developinimo serveri, isirasom json scripta: "start": "vite". terminale npm start ir taip pasileidzia vites serveris;
+        - 3. bootstrap isikelimas: npm i bootstrap: @import 'bootstrap/scss/bootstrap.scss';
+        - 4. susiinstalinam sa'sa: npm i sass 
