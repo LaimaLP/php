@@ -1,0 +1,5 @@
+1. Modeliai rasosi vienaskaita - pavadinimas.
+2. Komanda pridaranti visko medeliui: php artisan make:model Mechanic --all;
+3. migracija: duomenu strukturos sukurimas duomenu bazeje;
+4. informuoti apie musu db: env->
+terminale php artisan migrate
