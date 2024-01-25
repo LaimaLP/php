@@ -21,7 +21,7 @@ class MechanicController extends Controller
      */
     public function create()
     {
-        //
+        return view('mechanics.create');
     }
 
     /**
@@ -29,8 +29,15 @@ class MechanicController extends Controller
      */
     public function store(StoreMechanicRequest $request)
     {
-        //
+        Mechanic::create($request->all());
+
+        return redirect()->route('mechanics-index');
     }
+
+
+
+
+
 
     /**
      * Display the specified resource.

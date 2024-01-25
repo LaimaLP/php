@@ -3,3 +3,10 @@
 3. migracija: duomenu strukturos sukurimas duomenu bazeje;
 4. informuoti apie musu db: env->
 terminale php artisan migrate
+
+5. logina vagiam: 1. composer require laravel/ui  - ideda laravelio userio interfeisa.
+                    2.  - isorei:
+                    (loginas senoviksas, bet veikia. UI. DUoda virsu, stiliu, loginu langus)
+                    php artisan ui vue --auth;
+                    npm install
+                    npm run dev
