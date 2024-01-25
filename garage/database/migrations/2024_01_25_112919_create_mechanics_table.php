@@ -10,12 +10,12 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {//taip perduodame info i DB.
         Schema::create('mechanics', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 64);
+            $table->id(); //(automatiskai didinasi)
+            $table->string('name', 64); //(mechaniko vardas, varcharas, 64 ilgio)
             $table->string('surname', 64);
-            $table->timestamps();
+            $table->timestamps(); //(data, sukuria du stelpelius)
         });
     }
 

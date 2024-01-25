@@ -5,22 +5,23 @@
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card">
-                    <div class="card-header">Idarbinti nauja mechanika</div>
+                    <h3 class="card-header">Įdarbinti naują mechaniką</h3>
 
                     <div class="card-body">
                         <form action="{{ route('mechanics-store') }}" method="post">
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label>Vardas</label>
                                 <input type="text" name="name" class="form-control">
                                 <small class="form-text text-muted">Įveskite naujo mechaniko vardą</small>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label>Pavardė</label>
                                 <input type="text" name="surname" class="form-control">
                                 <small class="form-text text-muted">Įveskite naujo mechaniko pavardę</small>
                             </div>
                             <button type="submit" class="btn btn-primary">Įdarbinti</button>
-                            @csrf
+                            @csrf 
+                            {{-- jei sito neuzrasome forma siuncia i 419 --}}
                         </form>
                     </div>
                 </div>
@@ -28,4 +29,4 @@
         </div>
     </div>
 @endsection
-@section('title', 'Idarbinti nauja mechanika')
+@section('title', 'Įdarbinti naują mechaniką')

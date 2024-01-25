@@ -1,12 +1,23 @@
-1. Modeliai rasosi vienaskaita - pavadinimas.
-2. Komanda pridaranti visko medeliui: php artisan make:model Mechanic --all;
-3. migracija: duomenu strukturos sukurimas duomenu bazeje;
-4. informuoti apie musu db: env->
-terminale php artisan migrate
+2022-01-25 (nuo 42 min)
 
-5. logina vagiam: 1. composer require laravel/ui  - ideda laravelio userio interfeisa.
+naujam projektui: laravel new Pavadinimas, npm install.
+
+Modelis atspindi daikto visuma, pvz mechaniko, tai viskas apie ji. Tampriai susije su DB. Istrinam modeli, istrinam ir is DB. 
+1. Modeliai rasosi vienaskaita - pavadinimas. Nes konkreciai laiko vieno mechaniko savybes.
+2. Komanda pridaranti visko medeliui(visko, ko reikia infrastrukturai): php artisan make:model Mechanic --all;
+Sukuria modeli app/Models/
+3. Modelis sukuria ir migracija (database/Migration): duomenu strukturos sukurimas duomenu bazeje; lenteles perkeliam i DB.
+4. informuoti apie musu db: env-> DB_DATABASE=garage: terminale php artisan migrate.Duomenu atnaujinimui naudoyi php artisan migrate:fresh(perraso DB)
+
+!!! migracijos lentelesse svarbus eiliskumas. Daznai gaunam klaida. Eiliskumas turi buti logiskas.
+
+
+5. logino autorizacijos templeita vagiam (iui): 
+                    1. composer require laravel/ui  - ideda laravelio userio interfeisa.
                     2.  - isorei:
-                    (loginas senoviksas, bet veikia. UI. DUoda virsu, stiliu, loginu langus)
+                    (loginas senoviksas, bet veikia. UI. Duoda virsu, stiliu, loginu langus)
                     php artisan ui vue --auth;
-                    npm install
-                    npm run dev
+                    npm install->npm run dev.
+
+
+Requoesto formose value name ir surname pilnai atitinka DB lentele;  fillable irasyti tie laukeliai, ir kontroleryje nevaliduojam duomenu.

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MechanicController AS M;
+use App\Http\Controllers\MechanicController AS M; //pervadinu kontroleri trumpiau
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,15 +20,15 @@ Route::get('/', function () {
 
 // Mechanics CRUD Group
 //viska sugrupuojame. prefix sutrumpina kelio uzrasyma
-Route::prefix('mechanics')->name('mechanics')->group(function () {
-    Route::get('/', [M::class, 'index'])->name('-index'); //rodysim sarasa
-    Route::get('/create', [M::class, 'create'])->name('-create'); //creato forma
-    Route::post('/', [M::class, 'store'])->name('-store'); //uzsaugojimas
-    Route::get('/{mechanic}', [M::class, 'show'])->name('-show');//konkretus mechanikas
-    Route::get('/{mechanic}/edit', [M::class, 'edit'])->name('-edit');// jo redagavimo forma
-    Route::put('/{mechanic}', [M::class, 'update'])->name('-update'); //redaguosim
-    Route::get('/{mechanic}/delete', [M::class, 'delete'])->name('-delete');  //deleto patvirtinimas
-    Route::delete('/{mechanic}', [M::class, 'destroy'])->name('-destroy');
+Route::prefix('mechanics')->name('mechanics-')->group(function () {
+    Route::get('/', [M::class, 'index'])->name('index'); //rodysim sarasa
+    Route::get('/create', [M::class, 'create'])->name('create'); //creato forma
+    Route::post('/', [M::class, 'store'])->name('store'); //uzsaugojimas
+    Route::get('/{mechanic}', [M::class, 'show'])->name('show');//konkretus mechanikas
+    Route::get('/{mechanic}/edit', [M::class, 'edit'])->name('edit');// jo redagavimo forma
+    Route::put('/{mechanic}', [M::class, 'update'])->name('update'); //redaguosim
+    Route::get('/{mechanic}/delete', [M::class, 'delete'])->name('delete');  //deleto confirmacija
+    Route::delete('/{mechanic}', [M::class, 'destroy'])->name('destroy');
 });
 
 

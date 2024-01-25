@@ -21,7 +21,7 @@ class MechanicController extends Controller
      */
     public function create()
     {
-        return view('mechanics.create');
+        return view('mechanics.create'); //nurodomas kelias
     }
 
     /**
@@ -29,8 +29,9 @@ class MechanicController extends Controller
      */
     public function store(StoreMechanicRequest $request)
     {
-        Mechanic::create($request->all());
-
+        //sukuriam nauja modeli, mechanika
+        Mechanic::create($request->all()); //imam visus duomenis, nevaliduotus
+        //po to keliaujam i mechanic index'a.
         return redirect()->route('mechanics-index');
     }
 

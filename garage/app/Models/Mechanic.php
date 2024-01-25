@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mechanic extends Model
 {
     use HasFactory;
-
+    
+//o kur sita panaudojam dar?
     protected $fillable = [
         'name',
         'surname',

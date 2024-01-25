@@ -11,7 +11,7 @@ class StoreMechanicRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return true; //useriai viska gali daryti, pakeiciam i true
     }
 
     /**
