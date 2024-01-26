@@ -28,5 +28,5 @@
 ** data: 2024-11-16
     * 26 paskaita
     - API, servisas-servisas bendravimas;
-    - messages
+    - messages (REZIUME nuo 53 min)
 

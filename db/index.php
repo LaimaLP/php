@@ -13,7 +13,7 @@ $options = [ //standartine konfiguracija
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-//super darmui sql naudoti, kitais atvejais PDO.
+//super darbui sql naudoti, kitais atvejais PDO.
 
 $pdo = new PDO($dsn, $user, $pass, $options); //sukuriam nauja obj naudojant suvestus dalykus
 //Tarpininkas su kuriuo snekesim su DB
@@ -27,7 +27,7 @@ READ'o sintakse:
  SELECT column1, column2, ...
  FROM table_name; */
 
-//nusisedejimas kintamojo vardas $sql, nekeisti. Pripazita didziamas ir mazasias.
+//nusisedejimas kintamojo vardas $sql, nekeisti. Pripazista didziasias ir mazasias.
 $sql = "
     SELECT id, name, height, type
     FROM trees
@@ -62,20 +62,7 @@ $sql = "
     ";
 
 $stmt = $pdo->query($sql);
-
-
 $stat = $stmt->fetch(); //pasiimam i statistika
-
-
-$stmt = $pdo->query($sql);
-$stmt = $pdo->query($sql);
-
-$average = $stmt->fetch();
-
-print_r($average)
-
-
-
 
 ?>
 
