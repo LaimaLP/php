@@ -21,3 +21,32 @@ Sukuria modeli app/Models/
 
 
 Requoesto formose value name ir surname pilnai atitinka DB lentele;  fillable irasyti tie laukeliai, ir kontroleryje nevaliduojam duomenu.
+
+## 2024-01-29
+~46 min ka papildomai isirasyti atsisiuntus projekta is githubo;
+
+
+
+- Kolekcijos? https://laravel.com/docs/10.x/collections
+    kaip promityvus masyvas, kuris turi savyje metodu, kuriais galima naudotis; Viska jau pati padaro, pvz nereikia papildomai usort();
+    turi savy metoda ir sortina pasiprasius. Super lengva su jom dirbti.
+    - kolekcija galima foreachinti, forelsinti(prisideda empty, pvz kai nera ko eachinti, parodo atsakyma)
+
+
+objektas, kurio viduje kiti objektai(modeliai)
+
+Kolekciju metodai: https://laravel.com/docs/10.x/collections#available-methods
+
+- Seedingas: 
+    location: database/seeders
+php artisan migrate:fresh --seed
+
+
+
+- Fakeris biblioteka feikinimo: https://github.com/fzaninotto/Faker
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
+

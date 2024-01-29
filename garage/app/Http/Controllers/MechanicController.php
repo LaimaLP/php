@@ -11,9 +11,26 @@ class MechanicController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+ 
+
+
+
     public function index()
-    {
-        //
+    { //visi mechanikai yra Mechanic modelyje(statinis metodas all)
+        $mechanics = Mechanic::all(); //gauname visus mechanikus, grazina laravelio KOLEKCIJA
+        //bukiausiu atveju kolekcija kaip  masyvas, masyvas php yra plokscias primityvas, Masyvas, kuris turi savyje metodu, su kuriais galime zaisti
+      
+        return view(
+            'mechanics.index',
+            [
+                'mechanics' => $mechanics,
+            ]
+        );
     }
 
     /**
@@ -45,7 +62,16 @@ class MechanicController extends Controller
      */
     public function show(Mechanic $mechanic)
     {
-        //
+        return view(
+            'mechanics.show',
+            [
+                'mechanic' => $mechanic,
+            ]);
+
+
+
+
+
     }
 
     /**
@@ -53,7 +79,13 @@ class MechanicController extends Controller
      */
     public function edit(Mechanic $mechanic)
     {
-        //
+
+        return view(
+            'mechanics.edit',
+            [
+                'mechanic' => $mechanic,
+            ]
+        );
     }
 
     /**
@@ -61,14 +93,35 @@ class MechanicController extends Controller
      */
     public function update(UpdateMechanicRequest $request, Mechanic $mechanic)
     {
-        //
+        $mechanic->update($request->all());
+
+        return redirect()->route('mechanics-index');
     }
+
+    /*Confrom remove the specified resource from storage*/
+
+    public function delete(Mechanic $mechanic) //cia po kapotu susiranda ta id, skart grazina ta mechaniko modeli kuri reikia
+    {
+
+        return view(
+            'mechanics.delete',
+            [
+                'mechanic' => $mechanic,
+            ]
+        );
+    }
+
+    
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Mechanic $mechanic)
     {
-        //
+        $mechanic->delete();
+
+        return redirect()->route('mechanics-index');
     }
 }
