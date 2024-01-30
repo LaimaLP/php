@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Mechanic extends Model
 {
     use HasFactory;
-    
-//o kur sita panaudojam dar?
+
+    //o kur sita panaudojam dar?
     protected $fillable = [
         'name',
         'surname',
     ];
 
+    public function trucks()
+    {
+        return $this->hasMany(Truck::class);
+    }
 }

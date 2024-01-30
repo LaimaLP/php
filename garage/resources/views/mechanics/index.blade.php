@@ -3,9 +3,26 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="card mt-5">
-                    <h3 class="card-header">Dirbantys mechanikai</h3>
+                    <div class="card-header">
+                        <h1>Dirbantys Mechanikai</h1>
+                        <form>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="form-group mb-3">
+                                            <label class="m-1">Rūšiavimas</label>
+                                            <select class="form-select" name="sort">
+                                                <option value="0">Nerūšiuota</option>
+    
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <div class="card-body">
                         <table class="table">
@@ -23,7 +40,8 @@
                                         <a class="btn btn-success m-1"
                                             href={{ route('mechanics-edit', $mechanic) }}>Redaguoti</a>
                                         <a class="btn btn-danger m-1"
-                                            href={{ route('mechanics-delete', $mechanic) }}>Atleisti</a>
+                                            href={{ route('mechanics-delete', $mechanic) }}>Atleisti
+                                            [{{ $mechanic->trucks()->count() }}]</a>
                                         <a class="btn btn-secondary m-1"
                                             href={{ route('mechanics-show', $mechanic) }}>Perziureti</a>
                                     </td>

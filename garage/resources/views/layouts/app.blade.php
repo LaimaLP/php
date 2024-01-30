@@ -54,6 +54,25 @@
                         </li>
 
 
+                        <li class="nav-item dropdown">
+                            <a id="navbar2Dropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Sunkvezimiai
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('trucks-index')}}">
+                                    Visi sukvezimiai
+                                </a>
+                                <a class="dropdown-item" href="{{route('trucks-create')}}">
+                                    Naujas sunkvezimis
+                                </a>
+
+
+                            </div>
+                        </li>
+
+
 
                     </ul>
 
