@@ -3,30 +3,57 @@
 namespace App\Http\Controllers;
 
 use App\Models\Truck;
+use App\Models\Mechanic;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreTruckRequest;
 use App\Http\Requests\UpdateTruckRequest;
-use App\Models\Mechanic;
 
 class TruckController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-     
-      
-//         $truck = Truck::where('mechanic_id', 1)->first();
 
 
-// //   dump($truck);
-//   dd($truck->mechanic); //duoda galutini rezultata modeli
-//   dd($truck->mechanic()); //galim pricheininti dalyku
+        //         $truck = Truck::where('mechanic_id', 1)->first();
 
-       $trucks = Truck::all();
-       return view('trucks.index', [
-        'trucks' => $trucks,
-    ]);
+
+        // //   dump($truck);
+        //   dd($truck->mechanic); //duoda galutini rezultata modeli
+        //   dd($truck->mechanic()); //galim pricheininti dalyku
+
+
+
+
+
+        $sorts = Truck::getSorts();
+        $sortBy = $request->query('sort', '');
+        $perPageSelect = Truck::getPerPageSelect();
+        $perPage = (int) $request->query('per_page', 0);
+
+        $trucks = Truck::query();
+
+        $trucks = match ($sortBy) {
+            'model_asc' => $trucks->orderBy('brand'),
+            'model_desc' => $trucks->orderByDesc('brand'),
+            default => $trucks
+        };
+
+        if ($perPage > 0) {
+            $trucks = $trucks->paginate($perPage)->withQueryString();
+        } else {
+            $trucks = $trucks->get();
+        }
+
+        return view('trucks.index', [
+            'trucks' => $trucks,
+            'sorts' => $sorts,
+            'sortBy' => $sortBy,
+            'perPageSelect' => $perPageSelect,
+            'perPage' => $perPage,
+        ]);
     }
 
     /**
@@ -35,10 +62,10 @@ class TruckController extends Controller
     public function create()
     {
 
-        $mechanics = Mechanic::all();
+        $trucks = Mechanic::all();
 
         return view('trucks.create', [
-            'mechanics' => $mechanics,
+            'mechanics' => $trucks,
         ]);
     }
 
@@ -61,7 +88,8 @@ class TruckController extends Controller
             'trucks.show',
             [
                 'truck' => $truck,
-            ]);
+            ]
+        );
     }
 
     /**
@@ -72,7 +100,7 @@ class TruckController extends Controller
         $mechanics = Mechanic::all();
 
         return view('trucks.edit', [
-            'truck' =>$truck,
+            'truck' => $truck,
             'mechanics' => $mechanics,
         ]);
     }

@@ -22,7 +22,7 @@ class Mechanic extends Model
         'truck_count_asc' => 'Sunkvezimiu skaicius (didejimo tavrka)',
         'truck_count_desc' => 'Sunkvezimiu skaicius (mazejimo tavrka)',
         'perPageSelec' => 'perPageSelec',
-    ];
+    ]; //cia sudedam rusiavimo galimybes, arejus, indexai ir values. Value matom rusiavimo pasirinkty, fronte, o key perduodamas per query
 
     protected static $perPageSelect = [
         0 => 'Visi',
@@ -37,6 +37,9 @@ class Mechanic extends Model
         return self::$sorts;
     }
 
+    public static function getPerPageSelect(){
+        return self::$perPageSelect;
+    }
 
     public function trucks()
     {
@@ -44,7 +47,4 @@ class Mechanic extends Model
     }
 
 
-    public static function getPerPageSelect(){
-        return self::$perPageSelect;
-    }
 }

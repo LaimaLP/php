@@ -15,9 +15,30 @@ class Truck extends Model
         'mechanic_id',
     ];
 
+    protected static $sorts = [
+        'noSort' => 'Nerusiuota',
+        'model_asc' => 'Modelis (A-Z)',
+        'model_desc' => 'Modelis (Z-A)',
+    ];
 
+    protected static $perPageSelect = [
+        0 => 'Visi',
+        3 => 3,
+        11 => 11,
+        13 => 13,
+        29 => 29,
+    ];
+    public static function getSorts()
+    {
+        return self::$sorts;
+    }
+
+    public static function getPerPageSelect(){
+        return self::$perPageSelect;
+    }
     public function mechanic()
     {
         return $this->belongsTo(Mechanic::class); //nurodom kad butent sis mechanikas
     }
+
 }

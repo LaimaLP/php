@@ -3,37 +3,50 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md">
                 <div class="card mt-5">
                     <div class="card-header">
                         <h1>Dirbantys Mechanikai</h1>
-                        <form>
+                        <form action="{{route('mechanics-index')}}">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="form-group mb-3">
                                             <label class="m-2">Rūšiavimas</label>
                                             <select class="form-select mt-2" name="sort">
                                                 @foreach ($sorts as $sortKey => $sortValue)
-                                                <option value="{{ $sortKey }}" @if($sortBy == $sortKey) selected @endif>{{ $sortValue }}</option>
+                                                    <option value="{{ $sortKey }}"
+                                                        @if ($sortBy == $sortKey) selected @endif>
+                                                        {{ $sortValue }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="form-group mb-3">
-                                            <label class="m-2">Rodyti puslapyje rezultatų</label>
+                                    <div class="col-3 ">
+                                        <div class="form-group mb-2">
+                                            <label class="m-2">Puslapyje rezultatų</label>
                                             <select class="form-select mt-2" name="per_page">
                                                 @foreach ($perPageSelect as $perPageKey => $perPageValue)
-                                                <option value="{{ $perPageKey }}" @if($perPage == $perPageKey) selected @endif>{{ $perPageValue }}</option>
+                                                    <option value="{{ $perPageKey }}"
+                                                        @if ($perPage == $perPageKey) selected @endif>
+                                                        {{ $perPageValue }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    {{-- //paieskos laukelis --}}
+                                    <div class="col-3 mt-2">
+                                        <div class="form-group mb-2">
+                                            <label class="m-2">Ieskoti mechaniku</label>
+                                            <input type="text" name="s" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary mt-5">Rodyti</button>
-                                            <a href="{{ route('mechanics-index') }}" class="btn btn-secondary mt-5 ms-2">Pradinis</a>
+                                            <a href="{{ route('mechanics-index') }}"
+                                                class="btn btn-secondary mt-5 ms-2">Pradinis</a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,6 +87,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- cia sukurs mechaniku linkus --}}
                 @if ($perPage)
                     <div class="mt-3">
                         {{ $mechanics->links() }}

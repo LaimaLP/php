@@ -27,7 +27,7 @@ class MechanicController extends Controller
 
         //gauname visus mechanikus, grazina laravelio KOLEKCIJA
         //bukiausiu atveju kolekcija kaip  masyvas, masyvas php yra plokscias primityvas, Masyvas, kuris turi savyje metodu, su kuriais galime zaisti
-        $mechanics = Mechanic::all()->sortByDesc('surname'); //kolekcijos rusiavimas  
+        // $mechanics = Mechanic::all()->sortByDesc('surname'); //kolekcijos rusiavimas, nereikia uzbaigimo su get(), ta padaro jau kai kreipiames su all()  
 
 
 
@@ -41,13 +41,33 @@ class MechanicController extends Controller
 
 
         $sorts = Mechanic::getSorts();
-        $sortBy = $request->query('sort', '');
+        $sortBy = $request->query('sort', ''); //i query metoda pirmaissi kaip parametras eina key, ko ieskome, grazina to key value, o antrasis parametras defaultinis, jei nebutu kad butu
+       
         $perPageSelect = Mechanic::getPerPageSelect();
         $perPage = (int)$request->query('per_page', 0);
+        $s = $request->query('s', '');
 
         $mechanics = Mechanic::query();
- 
-        $mechanics = match($sortBy) {
+
+
+        if ($s) {
+            $keywords = explode(' ', $s);
+            if (count($keywords) > 1) {
+                $mechanics = $mechanics->where(function ($query) use ($keywords) {
+                    foreach (range(0, 1) as $index) {
+                        $query->orWhere('name', 'like', '%'.$keywords[$index].'%')
+                        ->where('surname', 'like', '%'.$keywords[1 - $index].'%');
+                    }
+                });
+            } else {
+                $mechanics = $mechanics
+                    ->where('name', 'like', "%{$s}%")
+                    ->orWhere('surname', 'like', "%{$s}%");
+            }
+        }
+
+
+        $mechanics = match ($sortBy) {
             'name_asc' => $mechanics->orderBy('surname'),
             'name_desc' => $mechanics->orderByDesc('surname'),
             'truck_count_asc' => $mechanics->withCount('trucks')->orderBy('trucks_count'),
@@ -56,9 +76,9 @@ class MechanicController extends Controller
         };
 
 
-        if($perPage>0){
-            $mechanics = $mechanics->paginate($perPage)->withQueryString();
-        }else{
+        if ($perPage > 0) {
+            $mechanics = $mechanics->paginate($perPage)->withQueryString(); //pridedam kad sektu query, einant per puslapius zinotu pagal ka buvo sortinta, persikrovus psl
+        } else {
             $mechanics = $mechanics->get();
         };
 
@@ -72,6 +92,7 @@ class MechanicController extends Controller
                 'sortBy' => $sortBy,
                 'perPageSelect' => $perPageSelect,
                 'perPage' => $perPage,
+                's' => $s,
             ]
         );
     }
