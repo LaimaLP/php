@@ -14,9 +14,37 @@ class Mechanic extends Model
         'name',
         'surname',
     ];
+    //tures veikti ant visu mechaniku, ne konkreciai vienam. protected kad niekas negaletu redaguoti sorto
+    protected static $sorts = [
+        'noSort' => 'Nerusiuota',
+        'name_asc' => 'Pavarde (A-Z)',
+        'name_desc' => 'Pavarde(Z-A)',
+        'truck_count_asc' => 'Sunkvezimiu skaicius (didejimo tavrka)',
+        'truck_count_desc' => 'Sunkvezimiu skaicius (mazejimo tavrka)',
+        'perPageSelec' => 'perPageSelec',
+    ];
+
+    protected static $perPageSelect = [
+        0 => 'Visi',
+        3 => 3,
+        11 => 11,
+        13 => 13,
+        29 => 29,
+    ];
+
+    public static function getSorts()
+    {
+        return self::$sorts;
+    }
+
 
     public function trucks()
     {
         return $this->hasMany(Truck::class);
+    }
+
+
+    public static function getPerPageSelect(){
+        return self::$perPageSelect;
     }
 }
