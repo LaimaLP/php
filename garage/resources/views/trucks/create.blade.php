@@ -27,9 +27,13 @@
                                     <option selected value="0">Pasirinkite mechaniką</option>
                                     @foreach ($mechanics as $mechanic)
                                     <option value="{{$mechanic->id}}"
+
+                                                     {{-- cia duodam oldui defaulta, jei pasirinkta reiksme, tai ir yra ta reiksme, jei ne tai 0 --}}
                                         @if(old('mechanic_id', $mechanicId ? $mechanicId : 0) == $mechanic->id) selected @endif
                                         >{{$mechanic->name}} {{$mechanic->surname}}</option>
                                     @endforeach
+
+
                                 </select>
                                 <small class="form-text text-muted">Priskirkite mechaniką sunkvežimio priežiūrai</small>
                             </div>

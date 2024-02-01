@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="alert alert-info" role="alert">
-                <strong>OK!</strong> {{ session('info') }}
+                <strong>Info!</strong> {{ session('info') }}
             </div>
         </div>
     </div>

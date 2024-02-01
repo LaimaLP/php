@@ -24,7 +24,7 @@ class StoreTruckRequest extends FormRequest
         return [
             'brand' => 'required|string|min:2|max:64',
             'plate' => 'required|string|regex:/^[A-Z]{3}-[0-9]{3}$/', // ABC-123
-            'mechanic_id' => 'required|integer|exists:mechanics,id',
+            'mechanic_id' => 'required|integer|exists:mechanics,id', //exist cia labai svarbus, jis eina i mechaniku lentele ir tikrina ar ten yra toks id ir informuoja
         ];
     }
 

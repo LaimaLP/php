@@ -96,7 +96,7 @@ class TruckController extends Controller
     {
         Truck::create($request->all()); //imam visus duomenis, nevaliduotus
         //po to keliaujam i mechanic index'a.
-        return redirect()->route('trucks-index');
+        return redirect()->route('trucks-index')->with('ok', 'Sunkvezimis pridetas');
     }
 
     /**
@@ -132,7 +132,7 @@ class TruckController extends Controller
     {
         $truck->update($request->all());
 
-        return redirect()->route('trucks-index');
+        return redirect()->route('trucks-index')->with('ok', 'Sunkvezimis atnaujintas');
     }
 
 
@@ -160,6 +160,6 @@ class TruckController extends Controller
     {
         $truck->delete();
 
-        return redirect()->route('trucks-index');
+        return redirect()->route('trucks-index')->with('info', 'Sunkvezimis nurasytas');
     }
 }

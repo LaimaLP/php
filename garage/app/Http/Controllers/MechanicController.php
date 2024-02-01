@@ -117,10 +117,6 @@ class MechanicController extends Controller
     }
 
 
-
-
-
-
     /**
      * Display the specified resource.
      */
