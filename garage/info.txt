@@ -57,3 +57,10 @@ rusiavimas, filtravimas, searchas
 
 modelyje pradedama: (kadangi visiems bus taikoma)
 
+## 2024-02-01
+filtravimas, validacijos
+
+
+- pluck() kolekcijos metodas naudojamas kai reikia ka nors issiimti is dideles kolekcijos. antrasis parametras yra indexas;
+- validaciju sarasas: https://laravel.com/docs/10.x/validation#available-validation-rules;
+- old() funkcija senos reiksmes, kad pasiliktu. pvz  value= "{{ old('brand') }}"

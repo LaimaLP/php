@@ -11,12 +11,12 @@
                         <form action="{{ route('mechanics-update', $mechanic) }}" method="post">
                             <div class="form-group mb-3">
                                 <label>Vardas</label>
-                                <input type="text" name="name" class="form-control" value="{{$mechanic->name}}">
+                                <input type="text" name="name" class="form-control" value="{{old('name', $mechanic->name)}}">
                                 <small class="form-text text-muted">Įveskite nauja mechaniko vardą</small>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Pavardė</label>
-                                <input type="text" name="surname" class="form-control" value="{{$mechanic->surname}}">
+                                <input type="text" name="surname" class="form-control" value="{{old('surname', $mechanic->surname)}}">
                                 <small class="form-text text-muted">Įveskite nauja mechaniko pavardę</small>
                             </div>
                             <button type="submit" class="btn btn-primary m-">Keisti</button>

@@ -113,7 +113,7 @@ class MechanicController extends Controller
         //sukuriam nauja modeli, mechanika
         Mechanic::create($request->all()); //imam visus duomenis, nevaliduotus
         //po to keliaujam i mechanic index'a.
-        return redirect()->route('mechanics-index');
+        return redirect()->route('mechanics-index')->with('ok', 'Mechanikas idarbintas');;
     }
 
 
@@ -155,7 +155,7 @@ class MechanicController extends Controller
     {
         $mechanic->update($request->all());
 
-        return redirect()->route('mechanics-index');
+        return redirect()->route('mechanics-index')->with('ok', 'Mechaniko duomenys atnaujinti');
     }
 
     /*Confrom remove the specified resource from storage*/
@@ -182,6 +182,6 @@ class MechanicController extends Controller
     {
         $mechanic->delete();
 
-        return redirect()->route('mechanics-index');
+        return redirect()->route('mechanics-index')->with('info', 'Mechanikas atleistas');
     }
 }
