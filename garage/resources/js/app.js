@@ -1,39 +1,118 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
+import axios from 'axios';
 import './bootstrap';
-import { createApp } from 'vue';
 
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
 
-const app = createApp({});
+console.log('Hello! I am app.js.');
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+const clearForm = form => {
+    form.querySelectorAll('input').forEach(input => {
+        input.value = '';
+    });
+}
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+const destroyFromList = url => {
+    axios.delete(url)
+    .then(response => {
+      console.log('Item deleted successfully:', response.data);
+      getList();
+      // You can perform additional actions after the deletion if needed
+      // For example, updating the UI, refreshing the list, etc.
+    })
+    .catch(error => {
+      console.error('Error deleting item:', error);
+    });
+}
 
-// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
-//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
-// });
 
-/**
- * Finally, we will attach the application instance to a HTML element with
- * an "id" attribute of "app". This element is included with the "auth"
- * scaffolding. Otherwise, you will need to add an element yourself.
- */
 
-app.mount('#app');
+const deleteFromList = url => {
+    axios.get(url)
+        .then(response => {
+            const section = document.querySelector('[data-modal-delete]');
+            section.innerHTML = response.data.html;
+            section.querySelectorAll('[data-close]').forEach(button => {
+                button.addEventListener('click', _ => {
+                    section.innerHTML = '';
+                });
+            });
+            const destroy = section.querySelector('[data-destroy]');
+            destroy.addEventListener('click', _ => {
+                const url = destroy.dataset.url;
+                destroyFromList(url);
+                section.innerHTML = '';
+            });
+
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+const addEventsToList = _ => {
+    const list = document.querySelector('[data-list]');
+    const buttons = list.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('click', _ => {
+            const url = button.dataset.url;
+            const action = button.dataset.action;
+            if (action === 'delete') {
+                deleteFromList(url);
+            } else if (action === 'edit') {
+                editFromList(url);
+            } else if (action === 'show') {
+                showFromList(url);
+            } else {
+                console.error('Action not found');
+            }
+        });
+    });
+}
+
+const getList = _ => {
+    const list = document.querySelector('[data-list]');
+    const url = list.dataset.url;
+    axios.get(url)
+        .then(response => {
+            list.innerHTML = response.data.html;
+            addEventsToList();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+if (document.querySelector('[data-create-form]')) {
+    const createForm = document.querySelector('[data-create-form]');
+    const url = createForm.dataset.url;
+    const button = createForm.querySelector('button');
+    const inputs = createForm.querySelectorAll('input');
+
+    button.addEventListener('click', _ => {
+        const data = {};
+        inputs.forEach(input => {
+            data[input.name] = input.value;
+        });
+        axios.post(url, data)
+            .then(response => {
+                console.log(response.data);
+                clearForm(createForm);
+                getList();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+    });
+
+
+    if (document.querySelector('[data-list]')) {
+        getList();
+    }
+
+
+
+
+
+}

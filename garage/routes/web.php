@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MechanicController AS M; //pervadinu kontroleri trumpiau
 use App\Http\Controllers\TruckController AS T; //pervadinu kontroleri trumpiau
+use App\Http\Controllers\CompanyController AS C; //pervadinu kontroleri trumpiau
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +48,20 @@ Route::prefix('trucks')->name('trucks-')->group(function () {
     Route::get('/{truck}/delete', [T::class, 'delete'])->name('delete');
     Route::delete('/{truck}', [T::class, 'destroy'])->name('destroy');
 });
+
+
+
+Route::prefix('companies')->name('companies-')->group(function () {
+    Route::get('/', [C::class, 'index'])->name('index');
+    Route::post('/', [C::class, 'store'])->name('store');
+    Route::get('/list', [C::class, 'list'])->name('list');
+    Route::get('/{company}/delete', [C::class, 'delete'])->name('delete');
+    Route::delete('/{company}', [C::class, 'destroy'])->name('destroy');
+});
+
+
+
+
 
 Auth::routes();
 

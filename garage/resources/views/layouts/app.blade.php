@@ -67,10 +67,23 @@
                                 <a class="dropdown-item" href="{{route('trucks-create')}}">
                                     Naujas sunkvezimis
                                 </a>
-
-
                             </div>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('companies-index')}}">
+                                Imones
+                            </a>
+
+                            </li>
+
+
+
+
+
+
+
+
 
 
 
