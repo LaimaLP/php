@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach (range(1, 100) as $i) {
- 
+
             $trucksModels = [
                 'Volvo',
                 'Man',
@@ -40,14 +40,26 @@ class DatabaseSeeder extends Seeder
                 'DAF',
                 'Mitsubishi'
             ];
- 
+
             DB::table('trucks')->insert([
                 'brand' => $faker->randomElement($trucksModels),
                 'plate' => $faker->regexify('[A-Z]{3}-[0-9]{3}'),
                 'mechanic_id' => $faker->numberBetween(1, 20),
             ]);
- 
         }
+
+        foreach (range(1, 53) as $i) {
+            $companyName = $faker->company;
+            $companyNameParts = explode(' ', $companyName);
+            $companyNameWithoutFirstWord = implode(' ', array_slice($companyNameParts, 1));
+ 
+            DB::table('companies')->insert([
+                'name' => $companyNameWithoutFirstWord,
+                'type' => $faker->companySuffix,
+            ]);
+        }
+
+
 
 
 
