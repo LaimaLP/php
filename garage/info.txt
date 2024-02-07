@@ -68,3 +68,6 @@ filtravimas, validacijos
 
 ## 2024-02-05 
 JS crude
+
+## 2024-02-07 
+JS pagination, validacijos;
