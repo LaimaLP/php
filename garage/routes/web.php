@@ -60,11 +60,6 @@ Route::prefix('companies')->name('companies-')->group(function () {
     Route::get('/{company}/edit', [C::class, 'edit'])->name('edit');
     Route::put('/{company}', [C::class, 'update'])->name('update');
     Route::get('/{company}', [C::class, 'show'])->name('show');
-
-
-
-    
-
 });
 
 
