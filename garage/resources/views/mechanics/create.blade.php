@@ -7,7 +7,7 @@
             <div class="card mt-5">
                 <div class="card-header"><h1>Įdarbinti naują mechaniką</h1></div>
                 <div class="card-body">
-                    <form action="{{route('mechanics-store')}}" method="post" data-photo-create>
+                    <form action="{{route('mechanics-store')}}" method="post" data-photo-create enctype="multipart/form-data">
                         <div class="form-group mb-3">
                             <label>Vardas</label>
                             <input type="text" name="name" class="form-control" value="{{old('name')}}">
@@ -22,7 +22,7 @@
                             <div class="form-group mb-3">
                                 <label>Nuotrauka</label>
                                 <div class="d-flex">
-                                    <input type="file" class="form-control">
+                                    <input type="file" class="form-control" name="photos">
                                     <button type="button" class="btn btn-danger ms-2">-</button>
                                 </div>
                                 <small class="form-text text-muted">Pridėkite mechaniko nuotrauką</small>

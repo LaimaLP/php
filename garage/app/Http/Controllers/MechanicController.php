@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Mechanic;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMechanicRequest;
@@ -42,7 +43,7 @@ class MechanicController extends Controller
 
         $sorts = Mechanic::getSorts();
         $sortBy = $request->query('sort', ''); //i query metoda pirmaissi kaip parametras eina key, ko ieskome, grazina to key value, o antrasis parametras defaultinis, jei nebutu kad butu
-       
+
         $perPageSelect = Mechanic::getPerPageSelect();
         $perPage = (int)$request->query('per_page', 0);
         $s = $request->query('s', '');
@@ -55,8 +56,8 @@ class MechanicController extends Controller
             if (count($keywords) > 1) {
                 $mechanics = $mechanics->where(function ($query) use ($keywords) {
                     foreach (range(0, 1) as $index) {
-                        $query->orWhere('name', 'like', '%'.$keywords[$index].'%')
-                        ->where('surname', 'like', '%'.$keywords[1 - $index].'%');
+                        $query->orWhere('name', 'like', '%' . $keywords[$index] . '%')
+                            ->where('surname', 'like', '%' . $keywords[1 - $index] . '%');
                     }
                 });
             } else {
@@ -110,11 +111,26 @@ class MechanicController extends Controller
      */
     public function store(StoreMechanicRequest $request)
     {
-        //sukuriam nauja modeli, mechanika
-        Mechanic::create($request->all()); //imam visus duomenis, nevaliduotus
-        //po to keliaujam i mechanic index'a.
-        return redirect()->route('mechanics-index')->with('ok', 'Mechanikas idarbintas');;
+        
+        $mechanicId = Mechanic::create($request->all())->id;
+
+        if ($request->photos) {
+            foreach ($request->photos as $photo) {
+                $originalName = $photo->getClientOriginalName();
+                $namePrefix = time();
+                $originalName = "{$namePrefix}-{$originalName}";
+                $photo->move(public_path().'/img/', $originalName);
+                Photo::create([
+                    'mechanic_id' => $mechanicId,
+                    'path' => $originalName,
+                ]);
+            }
+        }
+
+
+        return redirect()->route('mechanics-index')->with('ok', 'Štai ir naujas mechanikas!');
     }
+
 
 
     /**
@@ -149,9 +165,53 @@ class MechanicController extends Controller
      */
     public function update(UpdateMechanicRequest $request, Mechanic $mechanic)
     {
+        
         $mechanic->update($request->all());
 
-        return redirect()->route('mechanics-index')->with('ok', 'Mechaniko duomenys atnaujinti');
+        $mechanicPhotosIds = $mechanic->photos->pluck('id')->toArray();
+        $photosIds = $request->photo_id ? $request->photo_id : [];
+        $toDelete = array_diff($mechanicPhotosIds, $photosIds);
+        $photoFilesIndexes = array_keys($request->photos ?? []);
+        $photoIdsIndexes = array_keys($request->photo_id ?? []);
+        $toOvewrite = array_intersect($photoFilesIndexes, $photoIdsIndexes);
+        $newPhotos = array_diff($photoFilesIndexes, $photoIdsIndexes);
+
+        if ($toDelete) {
+            foreach ($toDelete as $photoId) {
+                $photo = Photo::find($photoId);
+                $photo->delete();
+                $path = public_path().'/img/'.$photo->path;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+        }
+        if ($toOvewrite) {
+            foreach ($toOvewrite as $index) {
+                $photo = Photo::find($request->photo_id[$index]);
+                $originalName = $request->photos[$index]->getClientOriginalName();
+                $namePrefix = time();
+                $originalName = "{$namePrefix}-{$originalName}";
+                $request->photos[$index]->move(public_path().'/img/', $originalName);
+                $photo->update([
+                    'path' => $originalName,
+                ]);
+            }
+        }
+        if ($newPhotos) {
+            foreach ($newPhotos as $index) {
+                $originalName = $request->photos[$index]->getClientOriginalName();
+                $namePrefix = time();
+                $originalName = "{$namePrefix}-{$originalName}";
+                $request->photos[$index]->move(public_path().'/img/', $originalName);
+                Photo::create([
+                    'mechanic_id' => $mechanic->id,
+                    'path' => $originalName,
+                ]);
+            }
+        }
+
+        return redirect()->route('mechanics-index')->with('ok', 'Mechaniko duomenys dabar jau pakeisti.');
     }
 
     /*Confrom remove the specified resource from storage*/
