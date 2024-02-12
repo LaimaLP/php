@@ -71,3 +71,9 @@ JS crude
 
 ## 2024-02-07 
 JS pagination, validacijos;
+
+## 2024-02-12
+
+-servisai: 
+
+php artisan make:middleware Roles

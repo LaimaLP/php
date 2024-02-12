@@ -189,6 +189,14 @@ class MechanicController extends Controller
         if ($toOvewrite) {
             foreach ($toOvewrite as $index) {
                 $photo = Photo::find($request->photo_id[$index]);
+
+                $path = public_path().'/img/'.$photo->path; //be sito pasilieka servery ir pakeista nuotrauka tik jos nerodo, tai dabar ir kelia istrinam ir nuotrauka
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+
+
+
                 $originalName = $request->photos[$index]->getClientOriginalName();
                 $namePrefix = time();
                 $originalName = "{$namePrefix}-{$originalName}";

@@ -24,14 +24,14 @@ Route::get('/', function () {
 // Mechanics CRUD Group
 //viska sugrupuojame. prefix sutrumpina kelio uzrasyma
 Route::prefix('mechanics')->name('mechanics-')->group(function () {
-    Route::get('/', [M::class, 'index'])->name('index'); //rodysim sarasa
-    Route::get('/create', [M::class, 'create'])->name('create'); //creato forma
-    Route::post('/', [M::class, 'store'])->name('store'); //uzsaugojimas
-    Route::get('/{mechanic}', [M::class, 'show'])->name('show');//konkretus mechanikas
-    Route::get('/{mechanic}/edit', [M::class, 'edit'])->name('edit');// jo redagavimo forma
-    Route::put('/{mechanic}', [M::class, 'update'])->name('update'); //redaguosim
-    Route::get('/{mechanic}/delete', [M::class, 'delete'])->name('delete');  //deleto confirmacija
-    Route::delete('/{mechanic}', [M::class, 'destroy'])->name('destroy');
+    Route::get('/', [M::class, 'index'])->middleware(['role:admin|animal|user'])->name('index'); //rodysim sarasa
+    Route::get('/create', [M::class, 'create'])->middleware(['role:admin|animal'])->name('create'); //creato forma
+    Route::post('/', [M::class, 'store'])->middleware(['role:admin|animal'])->name('store'); //uzsaugojimas
+    Route::get('/{mechanic}', [M::class, 'show'])->middleware(['role:admin|animal|user'])->name('show');//konkretus mechanikas
+    Route::get('/{mechanic}/edit', [M::class, 'edit'])->middleware(['role:admin'])->name('edit');// jo redagavimo forma
+    Route::put('/{mechanic}', [M::class, 'update'])->middleware(['role:admin'])->name('update'); //redaguosim
+    Route::get('/{mechanic}/delete', [M::class, 'delete'])->middleware(['role:admin'])->name('delete');  //deleto confirmacija
+    Route::delete('/{mechanic}', [M::class, 'destroy'])->middleware(['role:admin'])->name('destroy');
 });
 
 
@@ -39,7 +39,7 @@ Route::prefix('mechanics')->name('mechanics-')->group(function () {
 
 
 Route::prefix('trucks')->name('trucks-')->group(function () {
-    Route::get('/', [T::class, 'index'])->name('index');
+    Route::get('/', [T::class, 'index'])->middleware(['role:admin|animal'])->name('index');
     Route::get('/create', [T::class, 'create'])->name('create');
     Route::post('/', [T::class, 'store'])->name('store');
     Route::get('/{truck}', [T::class, 'show'])->name('show');

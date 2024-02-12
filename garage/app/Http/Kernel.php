@@ -13,6 +13,9 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
+
+
+     //sitie visada pasileidzia pacioj pacioj pradzioj, webo kontroleriu middlewarai.
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -64,5 +67,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'role' => \App\Http\Middleware\Roles::class,
     ];
+    //cia vykdom middleware registracija ir paskui nusirodysim kur norim ji taikyti, del to nerasom i grupes auksciau.
 }
