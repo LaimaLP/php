@@ -39,7 +39,7 @@ Route::prefix('mechanics')->name('mechanics-')->group(function () {
 
 
 Route::prefix('trucks')->name('trucks-')->group(function () {
-    Route::get('/', [T::class, 'index'])->middleware(['role:admin|animal'])->name('index');
+    Route::get('/', [T::class, 'index'])->name('index');
     Route::get('/create', [T::class, 'create'])->name('create');
     Route::post('/', [T::class, 'store'])->name('store');
     Route::get('/{truck}', [T::class, 'show'])->name('show');

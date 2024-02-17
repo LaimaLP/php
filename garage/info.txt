@@ -77,3 +77,8 @@ JS pagination, validacijos;
 -servisai: 
 
 php artisan make:middleware Roles
+
+php artisan make:provider RolesServiceProvider
+
+## 2024-02-13
+many to many rysys

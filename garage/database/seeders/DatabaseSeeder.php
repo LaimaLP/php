@@ -44,9 +44,16 @@ class DatabaseSeeder extends Seeder
             DB::table('trucks')->insert([
                 'brand' => $faker->randomElement($trucksModels),
                 'plate' => $faker->regexify('[A-Z]{3}-[0-9]{3}'),
-                'mechanic_id' => $faker->numberBetween(1, 20),
             ]);
         }
+
+        foreach(range(1, 100) as $i){
+
+
+
+            //papildyti
+        }
+
 
         foreach (range(1, 53) as $i) {
             $companyName = $faker->company;

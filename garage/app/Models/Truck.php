@@ -36,7 +36,7 @@ class Truck extends Model
     public static function getPerPageSelect(){
         return self::$perPageSelect;
     }
-    public function mechanic()
+    public function mechanics()
     {
         return $this->belongsTo(Mechanic::class); //nurodom kad butent sis mechanikas
     }

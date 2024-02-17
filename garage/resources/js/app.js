@@ -239,10 +239,4 @@ if (document.querySelector('[data-create-form]')) {
             getList();
         });
     }
-
-
-
-
-
-
 }

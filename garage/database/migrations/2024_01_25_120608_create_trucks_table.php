@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('brand', 64);
             $table->string('plate', 10);
-            $table->unsignedBigInteger('mechanic_id')->nullable(); //reikalingas apjungiant lenteles, per ID susiejam. Rysi daro mechanic_id stulpelis su references id mechaniku lenteleje.
-            $table->foreign('mechanic_id')->references('id')->on('mechanics'); //rysio aprasas
+          
             $table->timestamps();
 
         });
