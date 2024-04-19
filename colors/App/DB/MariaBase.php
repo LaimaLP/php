@@ -38,7 +38,7 @@ class MariaBase implements DataBase
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$data->name, $data->color, $data->size]);
-        return $this->pdo->lastInsertId(); //grazina svieziausia ID
+        return $this->pdo->lastInsertId();
     }
 
     public function update(int $id, object $data) : bool
